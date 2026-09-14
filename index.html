@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Fabrice</title>
+    <title>Portfolio - Fabrice Olivier Lamine TINE</title>
     <style>
         :root {
             --primary-color: #0969da;
-            --secondary-color: #2ea44f;
             --bg-color: #f6f8fa;
             --card-bg: #ffffff;
             --text-color: #1f2328;
@@ -24,7 +23,7 @@
         }
 
         .container {
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -74,7 +73,6 @@
             align-items: center;
             gap: 6px;
             color: var(--subtext-color);
-            text-decoration: none;
         }
 
         .contact-item a {
@@ -88,10 +86,10 @@
             text-decoration: underline;
         }
 
-        /* Section Projets */
+        /* Titres de Section */
         .section-title {
             font-size: 1.4em;
-            margin-bottom: 20px;
+            margin: 35px 0 20px 0;
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 8px;
         }
@@ -120,7 +118,6 @@
             margin-top: 0;
             margin-bottom: 10px;
             font-size: 1.25em;
-            color: var(--text-color);
         }
 
         .project-description {
@@ -147,7 +144,7 @@
             text-decoration: none;
             border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.2s, border-color 0.2s;
+            transition: background-color 0.2s;
         }
 
         .btn-primary {
@@ -170,7 +167,6 @@
             background-color: #e5e7eb;
         }
 
-        /* Adaptabilité Mobile */
         @media (max-width: 600px) {
             .profile-header {
                 flex-direction: column;
@@ -186,29 +182,24 @@
 
 <div class="container">
 
-    <!-- Section En-tête / Profil -->
+    <!-- EN-TÊTE : Photo de profil et Coordonnées -->
     <header class="profile-header">
-        <!-- Ta photo de profil -->
-        <img src="photo.jpg" alt="Photo de profil de Fabrice" class="profile-img">
+        <img src="photo.jpg" alt="Photo de Fabrice Olivier Lamine TINE" class="profile-img">
         
         <div class="profile-info">
-            <h1>Fabrice</h1>
-            <p class="profile-title">Ingénieur Réseaux & Systèmes Informatiques</p>
+            <h1>Fabrice Olivier Lamine TINE</h1>
+            <p class="profile-title">Étudiant Master 1 - Réseaux & Systèmes Informatiques (RESI)</p>
             
             <div class="contact-list">
-                <!-- Téléphone -->
+                <!-- Remplacez le numéro de téléphone et l'email ci-dessous -->
                 <div class="contact-item">
                     <span>📞</span>
-                    <a href="tel:+221XXXXXXXXX">+221 XX XXX XX XX</a>
+                    <a href="tel:+221770000000">+221 77 000 00 00</a>
                 </div>
-                
-                <!-- Email -->
                 <div class="contact-item">
                     <span>✉️</span>
-                    <a href="mailto:ton.email@example.com">ton.email@example.com</a>
+                    <a href="mailto:votre.email@example.com">votre.email@example.com</a>
                 </div>
-
-                <!-- Localisation -->
                 <div class="contact-item">
                     <span>📍</span>
                     <span>Sénégal</span>
@@ -217,60 +208,141 @@
         </div>
     </header>
 
-    <!-- Liste des Projets -->
-    <h2 class="section-title">Mes Projets & Travaux Techniques</h2>
 
+    <!-- SECTION 1 : CERTIFICATIONS ET BADGES CLOUD/RÉSEAUX -->
+    <h2 class="section-title">📜 Certifications & Certificats AWS / Cisco</h2>
     <div class="projects-grid">
 
-        <!-- PROJET 1 -->
         <div class="project-card">
-            <h3 class="project-title">Sécurité & Authentification MFA (AD DS, NPS RADIUS, Entra ID)</h3>
-            <p class="project-description">
-                Mise en place d'une infrastructure d'authentification centralisée et sécurisée sous Windows Server 2022, intégrant un serveur NPS RADIUS et l'extension Microsoft Entra ID pour l'authentification multifacteur.
-            </p>
+            <h3 class="project-title">AWS Academy Graduate - Cloud Architecting</h3>
+            <p class="project-description">Badge et certificat de formation AWS Academy couvrant la conception d'architectures Cloud scalables et sécurisées.</p>
             <div class="actions">
-                <!-- Visualiser dans un nouvel onglet -->
-                <a href="docs/Projet_MFA_AD.pdf" target="_blank" class="btn btn-primary">
-                    👁️ Visualiser (PDF)
-                </a>
-                <!-- Télécharger directement -->
-                <a href="docs/Projet_MFA_AD.pdf" download class="btn btn-secondary">
-                    📥 Télécharger
-                </a>
+                <a href="docs/AWS_Academy_Graduate___Cloud_Architecting___Training_Badge_Badge20260331-30-j7ksjw.pdf" target="_blank" class="btn btn-primary">👁️ Voir le certificat (PDF)</a>
+                <a href="Badge_AWS.png" target="_blank" class="btn btn-secondary">🖼️ Voir le Badge (PNG)</a>
             </div>
         </div>
 
-        <!-- PROJET 2 -->
         <div class="project-card">
-            <h3 class="project-title">Automation & Infrastructure as Code (Proxmox VE & Terraform)</h3>
-            <p class="project-description">
-                Déploiement automatisé et provisioning de conteneurs LXC sur un cluster de virtualisation Proxmox VE à l'aide de scripts d'Infrastructure as Code (IaC) Terraform.
-            </p>
+            <h3 class="project-title">CCNA - Switching, Routing, and Wireless Essentials</h3>
+            <p class="project-description">Certificat Cisco validant les compétences en commutation, routage dynamique, réseaux sans fil et dépannage infrastructure.</p>
             <div class="actions">
-                <a href="docs/Projet_Proxmox_Terraform.pdf" target="_blank" class="btn btn-primary">
-                    👁️ Visualiser (PDF)
-                </a>
-                <a href="docs/Projet_Proxmox_Terraform.pdf" download class="btn btn-secondary">
-                    📥 Télécharger
-                </a>
+                <a href="docs/CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+                <a href="docs/CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate.pdf" download class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
-        <!-- PROJET 3 -->
         <div class="project-card">
-            <h3 class="project-title">Architecture & Routage Dynamique BGP sous GNS3</h3>
-            <p class="project-description">
-                Conception, configuration et validation d'une topologie réseau multi-sites émulée sous GNS3 avec interconnexion via le protocole de routage dynamique BGP.
-            </p>
+            <h3 class="project-title">CCNA - Introduction to Networks</h3>
+            <p class="project-description">Certificat Cisco couvrant les fondamentaux des réseaux, le modèle OSI, l'adressage IP (IPv4/IPv6) et la configuration initiale des équipements.</p>
             <div class="actions">
-                <a href="docs/Projet_Routage_BGP.pdf" target="_blank" class="btn btn-primary">
-                    👁️ Visualiser (PDF)
-                </a>
-                <a href="docs/Projet_Routage_BGP.pdf" download class="btn btn-secondary">
-                    📥 Télécharger
-                </a>
+                <a href="docs/CCNA-_Introduction_to_Networks_certificate.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+                <a href="docs/CCNA-_Introduction_to_Networks_certificate.pdf" download class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
+
+    </div>
+
+
+    <!-- SECTION 2 : RAPPORTS ET PROJETS TECHNIQUES -->
+    <h2 class="section-title">📂 Rapports de Projets & Travaux Pratiques</h2>
+    <div class="projects-grid">
+
+        <div class="project-card">
+            <h3 class="project-title">Ingénierie DevOps & Automation - SmartTask</h3>
+            <p class="project-description">Rapport de projet axé sur l'intégration continue, le déploiement et l'automatisation d'applications avec des outils DevOps.</p>
+            <div class="actions">
+                <a href="docs/Rapport_Ingenierie_SmartTask_DevOps_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+                <a href="docs/Rapport_Ingenierie_SmartTask_DevOps_Fabrice_Olivier_Lamine_TINE.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3 class="project-title">Déploiement d'une Infrastructure Réseau Sécurisée</h3>
+            <p class="project-description">Étude et mise en œuvre d'une infrastructure réseau sécurisée intégrant des politiques d'accès et de protection.</p>
+            <div class="actions">
+                <a href="docs/rapport_tp_DÉPLOIEMENT D'UNE INFRASTRUCTURE SÉCURISÉE AVEC .pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+                <a href="docs/rapport_tp_DÉPLOIEMENT D'UNE INFRASTRUCTURE SÉCURISÉE AVEC .pdf" download class="btn btn-secondary">📥 Télécharger</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3 class="project-title">Routage Dynamique BGP & Filtrage (Module 7)</h3>
+            <p class="project-description">TP avancé sur la configuration, le filtrage de routes et la sécurisation des annonces BGP entre systèmes autonomes.</p>
+            <div class="actions">
+                <a href="docs/Rapport_TP_Module7_BGP_Filtrage Fabrice olivier Lamine TINE M1 RESI(1).pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+                <a href="docs/Rapport_TP_Module7_BGP_Filtrage Fabrice olivier Lamine TINE M1 RESI(1).pdf" download class="btn btn-secondary">📥 Télécharger</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3 class="project-title">Architecture iBGP & eBGP (Module 6)</h3>
+            <p class="project-description">Mise en œuvre du routage iBGP interne et eBGP externe pour l'interconnexion de réseaux d'entreprise.</p>
+            <div class="actions">
+                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3 class="project-title">Configuration d'un Cluster (Haute Disponibilité)</h3>
+            <p class="project-description">Rapport technique sur l'installation et la configuration d'un cluster d'infrastructures pour garantir la haute disponibilité.</p>
+            <div class="actions">
+                <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+                <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" download class="btn btn-secondary">📥 Télécharger</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3 class="project-title">Administration Systèmes Linux & Windows</h3>
+            <p class="project-description">Rapport complet couvrant l'administration système, la gestion des utilisateurs, des services et des politiques de sécurité.</p>
+            <div class="actions">
+                <a href="docs/Rapport_D'administration_systhème_Fabrice_Olivier_Lamine_TINE .pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+                <a href="docs/Rapport_D'administration_systhème_Fabrice_Olivier_Lamine_TINE .pdf" download class="btn btn-secondary">📥 Télécharger</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3 class="project-title">Téléphonie sur IP (ToIP / VoIP)</h3>
+            <p class="project-description">Mise en place d'une solution de téléphonie IP d'entreprise, gestion du plan de numérotation et des protocoles de signalisation.</p>
+            <div class="actions">
+                <a href="docs/Rapport_Téléphonie_sur_ IP Fabrice Olivier Lamine TINE M1 RESI.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+                <a href="docs/Rapport_Téléphonie_sur_ IP Fabrice Olivier Lamine TINE M1 RESI.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3 class="project-title">Examen & Architecture de Stockage</h3>
+            <p class="project-description">Étude et rapport d'examen sur les architectures de stockage réseau (SAN, NAS, RAID et gestion des volumes).</p>
+            <div class="actions">
+                <a href="docs/Rappot_Examen_Stockage_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+                <a href="docs/Rappot_Examen_Stockage_Fabrice_Olivier_Lamine_TINE.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3 class="project-title">Machine Learning - Régression Linéaire Détaillée</h3>
+            <p class="project-description">Rapport détaillé sur la modélisation statistique, l'entraînement de régression linéaire et l'évaluation des métriques sous Python.</p>
+            <div class="actions">
+                <a href="docs/Rapport_Regression_Lineaire_Detaille.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+                <a href="docs/Rapport_Regression_Lineaire_Detaille.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+            </div>
+        </div>
+
+        <!-- ==================================================================== -->
+        <!-- INSTRUCTION POUR AJOUTER UN NOUVEAU PROJET À L'AVENIR :             -->
+        <!-- Copiez-collez le bloc ci-dessous et modifiez les textes et chemins : -->
+        <!--                                                                      -->
+        <!-- 
+        <div class="project-card">
+            <h3 class="project-title">Titre du nouveau projet</h3>
+            <p class="project-description">Description rapide du projet ici...</p>
+            <div class="actions">
+                <a href="docs/Nom_Du_Fichier.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+                <a href="docs/Nom_Du_Fichier.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+            </div>
+        </div> 
+        -->
+        <!-- ==================================================================== -->
 
     </div>
 
