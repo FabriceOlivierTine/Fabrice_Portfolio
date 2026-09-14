@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Fabrice</title>
+    <style>
+        :root {
+            --primary-color: #0969da;
+            --secondary-color: #2ea44f;
+            --bg-color: #f6f8fa;
+            --card-bg: #ffffff;
+            --text-color: #1f2328;
+            --subtext-color: #57606a;
+            --border-color: #d0d7de;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* En-tête Profil */
+        .profile-header {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 35px;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .profile-info h1 {
+            margin: 0 0 5px 0;
+            font-size: 1.8em;
+        }
+
+        .profile-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            font-size: 1.1em;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.95em;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--subtext-color);
+            text-decoration: none;
+        }
+
+        .contact-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* Section Projets */
+        .section-title {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .project-title {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.25em;
+            color: var(--text-color);
+        }
+
+        .project-description {
+            color: var(--subtext-color);
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        /* Boutons d'action */
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 18px;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary:hover {
+            background-color: #0451a5;
+        }
+
+        .btn-secondary {
+            background-color: #f3f4f6;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e5e7eb;
+        }
+
+        /* Adaptabilité Mobile */
+        @media (max-width: 600px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .contact-list {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Section En-tête / Profil -->
+    <header class="profile-header">
+        <!-- Ta photo de profil -->
+        <img src="photo.jpg" alt="Photo de profil de Fabrice" class="profile-img">
+        
+        <div class="profile-info">
+            <h1>Fabrice</h1>
+            <p class="profile-title">Ingénieur Réseaux & Systèmes Informatiques</p>
+            
+            <div class="contact-list">
+                <!-- Téléphone -->
+                <div class="contact-item">
+                    <span>📞</span>
+                    <a href="tel:+221XXXXXXXXX">+221 XX XXX XX XX</a>
+                </div>
+                
+                <!-- Email -->
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <a href="mailto:ton.email@example.com">ton.email@example.com</a>
+                </div>
+
+                <!-- Localisation -->
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Sénégal</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Liste des Projets -->
+    <h2 class="section-title">Mes Projets & Travaux Techniques</h2>
+
+    <div class="projects-grid">
+
+        <!-- PROJET 1 -->
+        <div class="project-card">
+            <h3 class="project-title">Sécurité & Authentification MFA (AD DS, NPS RADIUS, Entra ID)</h3>
+            <p class="project-description">
+                Mise en place d'une infrastructure d'authentification centralisée et sécurisée sous Windows Server 2022, intégrant un serveur NPS RADIUS et l'extension Microsoft Entra ID pour l'authentification multifacteur.
+            </p>
+            <div class="actions">
+                <!-- Visualiser dans un nouvel onglet -->
+                <a href="docs/Projet_MFA_AD.pdf" target="_blank" class="btn btn-primary">
+                    👁️ Visualiser (PDF)
+                </a>
+                <!-- Télécharger directement -->
+                <a href="docs/Projet_MFA_AD.pdf" download class="btn btn-secondary">
+                    📥 Télécharger
+                </a>
+            </div>
+        </div>
+
+        <!-- PROJET 2 -->
+        <div class="project-card">
+            <h3 class="project-title">Automation & Infrastructure as Code (Proxmox VE & Terraform)</h3>
+            <p class="project-description">
+                Déploiement automatisé et provisioning de conteneurs LXC sur un cluster de virtualisation Proxmox VE à l'aide de scripts d'Infrastructure as Code (IaC) Terraform.
+            </p>
+            <div class="actions">
+                <a href="docs/Projet_Proxmox_Terraform.pdf" target="_blank" class="btn btn-primary">
+                    👁️ Visualiser (PDF)
+                </a>
+                <a href="docs/Projet_Proxmox_Terraform.pdf" download class="btn btn-secondary">
+                    📥 Télécharger
+                </a>
+            </div>
+        </div>
+
+        <!-- PROJET 3 -->
+        <div class="project-card">
+            <h3 class="project-title">Architecture & Routage Dynamique BGP sous GNS3</h3>
+            <p class="project-description">
+                Conception, configuration et validation d'une topologie réseau multi-sites émulée sous GNS3 avec interconnexion via le protocole de routage dynamique BGP.
+            </p>
+            <div class="actions">
+                <a href="docs/Projet_Routage_BGP.pdf" target="_blank" class="btn btn-primary">
+                    👁️ Visualiser (PDF)
+                </a>
+                <a href="docs/Projet_Routage_BGP.pdf" download class="btn btn-secondary">
+                    📥 Télécharger
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
