@@ -6,173 +6,211 @@
     <title>Portfolio - Fabrice Olivier Lamine TINE</title>
     <style>
         :root {
-            --primary-color: #0969da;
-            --bg-color: #f6f8fa;
-            --card-bg: #ffffff;
-            --text-color: #1f2328;
-            --subtext-color: #57606a;
-            --border-color: #d0d7de;
+            --bg-color: #0d1117;
+            --card-bg: rgba(22, 27, 34, 0.85);
+            --border-color: #30363d;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --accent-cyan: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-glow: rgba(56, 139, 253, 0.15);
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-primary);
             margin: 0;
             padding: 40px 20px;
+            min-height: 100vh;
+
+            /* Fond illustrant un réseau informatique / nœuds interconnectés */
+            background-image: 
+                radial-gradient(circle at 25px 25px, rgba(88, 166, 255, 0.15) 2px, transparent 0),
+                linear-gradient(to right, rgba(48, 54, 61, 0.3) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(48, 54, 61, 0.3) 1px, transparent 1px);
+            background-size: 50px 50px, 40px 40px, 40px 40px;
+            background-attachment: fixed;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        /* En-tête Profil */
-        .profile-header {
-            background-color: var(--card-bg);
+        /* EN-TÊTE / PROFIL */
+        .profile-card {
+            background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 30px;
+            border-radius: 16px;
+            padding: 35px;
             display: flex;
             align-items: center;
-            gap: 25px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            margin-bottom: 35px;
+            gap: 30px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
         }
 
-        .profile-img {
-            width: 120px;
-            height: 120px;
+        .profile-avatar {
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--primary-color);
+            border: 3px solid var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
             flex-shrink: 0;
         }
 
-        .profile-info h1 {
-            margin: 0 0 5px 0;
-            font-size: 1.8em;
+        .profile-details h1 {
+            margin: 0 0 8px 0;
+            font-size: 2em;
+            letter-spacing: -0.5px;
         }
 
-        .profile-title {
-            color: var(--primary-color);
+        .profile-status {
+            color: var(--accent-cyan);
+            font-size: 1.15em;
             font-weight: 600;
-            margin: 0 0 15px 0;
-            font-size: 1.1em;
+            margin: 0 0 18px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .contact-list {
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-green);
+        }
+
+        .contact-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
             font-size: 0.95em;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 6px;
-            color: var(--subtext-color);
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
         }
 
         .contact-item a {
-            color: var(--text-color);
+            color: var(--text-primary);
             text-decoration: none;
             font-weight: 500;
         }
 
         .contact-item a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
+            color: var(--accent-cyan);
         }
 
-        /* Titres de Section */
-        .section-title {
+        /* SECTIONS & CARTES */
+        .section-header {
             font-size: 1.4em;
-            margin: 35px 0 20px 0;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 8px;
+            color: var(--text-primary);
+            margin: 40px 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
         }
 
-        .projects-grid {
+        .grid-layout {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 20px;
         }
 
-        .project-card {
-            background-color: var(--card-bg);
+        .card {
+            background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            backdrop-filter: blur(8px);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .project-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 6px 20px var(--accent-glow);
         }
 
-        .project-title {
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.25em;
+        .card-title {
+            margin: 0 0 10px 0;
+            font-size: 1.15em;
+            color: var(--text-primary);
+            line-height: 1.4;
         }
 
-        .project-description {
-            color: var(--subtext-color);
-            font-size: 0.95em;
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 0.9em;
             line-height: 1.5;
             margin-bottom: 20px;
+            flex-grow: 1;
         }
 
-        /* Boutons d'action */
-        .actions {
+        /* BOUTONS D'ACTION */
+        .btn-group {
             display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .btn {
+            flex: 1;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
-            padding: 9px 18px;
-            font-size: 0.9em;
+            padding: 9px 12px;
+            font-size: 0.85em;
             font-weight: 600;
             text-decoration: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.2s;
+            border-radius: 8px;
+            transition: all 0.2s ease;
         }
 
         .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            border: 1px solid transparent;
+            background-color: #238636;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .btn-primary:hover {
-            background-color: #0451a5;
+            background-color: #2ea043;
         }
 
         .btn-secondary {
-            background-color: #f3f4f6;
-            color: var(--text-color);
+            background-color: rgba(110, 118, 129, 0.1);
+            color: var(--text-primary);
             border: 1px solid var(--border-color);
         }
 
         .btn-secondary:hover {
-            background-color: #e5e7eb;
+            background-color: rgba(110, 118, 129, 0.2);
+            border-color: #8b949e;
         }
 
-        @media (max-width: 600px) {
-            .profile-header {
+        @media (max-width: 650px) {
+            .profile-card {
                 flex-direction: column;
                 text-align: center;
             }
-            .contact-list {
+            .contact-grid {
                 justify-content: center;
             }
         }
@@ -182,24 +220,35 @@
 
 <div class="container">
 
-    <!-- EN-TÊTE : Photo de profil et Coordonnées -->
-    <header class="profile-header">
-        <img src="photo.jpg" alt="Photo de Fabrice Olivier Lamine TINE" class="profile-img">
+    <!-- ================================================================= -->
+    <!-- EN-TÊTE DU PROFIL : PHOTO ET COORDONNÉES                         -->
+    <!-- ================================================================= -->
+    <header class="profile-card">
         
-        <div class="profile-info">
+        <!-- 💡 REMPLIR ICI : Assure-toi que l'image 'photo.jpg' est dans le même dossier -->
+        <img src="photo.jpg" alt="Photo de profil" class="profile-avatar">
+        
+        <div class="profile-details">
             <h1>Fabrice Olivier Lamine TINE</h1>
-            <p class="profile-title">Étudiant Master 1 - Réseaux & Systèmes Informatiques (RESI)</p>
             
-            <div class="contact-list">
-                <!-- Remplacez le numéro de téléphone et l'email ci-dessous -->
+            <div class="profile-status">
+                <span class="status-dot"></span>
+                Administrateur Réseaux et Systèmes en devenir
+            </div>
+            
+            <div class="contact-grid">
+                <!-- 💡 REMPLIR ICI : Ton numéro de téléphone -->
                 <div class="contact-item">
                     <span>📞</span>
-                    <a href="tel:+221770000000">+221 77 000 00 00</a>
+                    <a href="tel:+221771049053">+221 77 104 90 53</a>
                 </div>
+                
+                <!-- 💡 REMPLIR ICI : Ton adresse e-mail -->
                 <div class="contact-item">
                     <span>✉️</span>
-                    <a href="mailto:votre.email@example.com">votre.email@example.com</a>
+                    <a href="mailto:fabriceoliviertine@outlook.com">fabriceoliviertine@outlook.com</a>
                 </div>
+
                 <div class="contact-item">
                     <span>📍</span>
                     <span>Sénégal</span>
@@ -209,33 +258,42 @@
     </header>
 
 
-    <!-- SECTION 1 : CERTIFICATIONS ET BADGES CLOUD/RÉSEAUX -->
-    <h2 class="section-title">📜 Certifications & Certificats AWS / Cisco</h2>
-    <div class="projects-grid">
+    <!-- ================================================================= -->
+    <!-- SECTION 1 : CERTIFICATIONS ET CERTIFICATS                        -->
+    <!-- ================================================================= -->
+    <h2 class="section-header">📜 Certifications & Accreditation Cloud / Réseau</h2>
+    
+    <div class="grid-layout">
 
-        <div class="project-card">
-            <h3 class="project-title">AWS Academy Graduate - Cloud Architecting</h3>
-            <p class="project-description">Badge et certificat de formation AWS Academy couvrant la conception d'architectures Cloud scalables et sécurisées.</p>
-            <div class="actions">
-                <a href="docs/AWS_Academy_Graduate___Cloud_Architecting___Training_Badge_Badge20260331-30-j7ksjw.pdf" target="_blank" class="btn btn-primary">👁️ Voir le certificat (PDF)</a>
-                <a href="Badge_AWS.png" target="_blank" class="btn btn-secondary">🖼️ Voir le Badge (PNG)</a>
+        <div class="card">
+            <div>
+                <h3 class="card-title">AWS Academy Graduate - Cloud Architecting</h3>
+                <p class="card-desc">Accréditation validant les architectures Cloud, le dimensionnement, la sécurité et la haute disponibilité sur AWS.</p>
+            </div>
+            <div class="btn-group">
+                <a href="docs/AWS_Academy_Graduate___Cloud_Architecting___Training_Badge_Badge20260331-30-j7ksjw.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
+                <a href="Badge_AWS.png" target="_blank" class="btn btn-secondary">🖼️ Badge PNG</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <h3 class="project-title">CCNA - Switching, Routing, and Wireless Essentials</h3>
-            <p class="project-description">Certificat Cisco validant les compétences en commutation, routage dynamique, réseaux sans fil et dépannage infrastructure.</p>
-            <div class="actions">
-                <a href="docs/CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+        <div class="card">
+            <div>
+                <h3 class="card-title">CCNA - Switching, Routing, and Wireless Essentials</h3>
+                <p class="card-desc">Certification Cisco : Commutation, routage dynamique, VLANs, sécurité des ports et réseaux sans fil.</p>
+            </div>
+            <div class="btn-group">
+                <a href="docs/CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
                 <a href="docs/CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate.pdf" download class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <h3 class="project-title">CCNA - Introduction to Networks</h3>
-            <p class="project-description">Certificat Cisco couvrant les fondamentaux des réseaux, le modèle OSI, l'adressage IP (IPv4/IPv6) et la configuration initiale des équipements.</p>
-            <div class="actions">
-                <a href="docs/CCNA-_Introduction_to_Networks_certificate.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+        <div class="card">
+            <div>
+                <h3 class="card-title">CCNA - Introduction to Networks</h3>
+                <p class="card-desc">Certification Cisco : Principes fondamentaux du réseau, modèle OSI, adressage IPv4/IPv6 et routage initial.</p>
+            </div>
+            <div class="btn-group">
+                <a href="docs/CCNA-_Introduction_to_Networks_certificate.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
                 <a href="docs/CCNA-_Introduction_to_Networks_certificate.pdf" download class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
@@ -243,106 +301,129 @@
     </div>
 
 
-    <!-- SECTION 2 : RAPPORTS ET PROJETS TECHNIQUES -->
-    <h2 class="section-title">📂 Rapports de Projets & Travaux Pratiques</h2>
-    <div class="projects-grid">
+    <!-- ================================================================= -->
+    <!-- SECTION 2 : RAPPORTS ET PROJETS TECHNIQUES                       -->
+    <!-- ================================================================= -->
+    <h2 class="section-header">🖥️ Projets Réseaux, Systèmes & DevOps</h2>
+    
+    <div class="grid-layout">
 
-        <div class="project-card">
-            <h3 class="project-title">Ingénierie DevOps & Automation - SmartTask</h3>
-            <p class="project-description">Rapport de projet axé sur l'intégration continue, le déploiement et l'automatisation d'applications avec des outils DevOps.</p>
-            <div class="actions">
-                <a href="docs/Rapport_Ingenierie_SmartTask_DevOps_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+        <div class="card">
+            <div>
+                <h3 class="card-title">Ingénierie DevOps & Automation - SmartTask</h3>
+                <p class="card-desc">Mise en place de chaînes d'intégration et déploiement continu (CI/CD) et automatisation d'infrastructures.</p>
+            </div>
+            <div class="btn-group">
+                <a href="docs/Rapport_Ingenierie_SmartTask_DevOps_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
                 <a href="docs/Rapport_Ingenierie_SmartTask_DevOps_Fabrice_Olivier_Lamine_TINE.pdf" download class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <h3 class="project-title">Déploiement d'une Infrastructure Réseau Sécurisée</h3>
-            <p class="project-description">Étude et mise en œuvre d'une infrastructure réseau sécurisée intégrant des politiques d'accès et de protection.</p>
-            <div class="actions">
-                <a href="docs/rapport_tp_DÉPLOIEMENT D'UNE INFRASTRUCTURE SÉCURISÉE AVEC .pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+        <div class="card">
+            <div>
+                <h3 class="card-title">Déploiement d'une Infrastructure Sécurisée</h3>
+                <p class="card-desc">Mise en œuvre de politiques de sécurité réseau, pare-feu et contrôle d'accès d'entreprise.</p>
+            </div>
+            <div class="btn-group">
+                <a href="docs/rapport_tp_DÉPLOIEMENT D'UNE INFRASTRUCTURE SÉCURISÉE AVEC .pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
                 <a href="docs/rapport_tp_DÉPLOIEMENT D'UNE INFRASTRUCTURE SÉCURISÉE AVEC .pdf" download class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <h3 class="project-title">Routage Dynamique BGP & Filtrage (Module 7)</h3>
-            <p class="project-description">TP avancé sur la configuration, le filtrage de routes et la sécurisation des annonces BGP entre systèmes autonomes.</p>
-            <div class="actions">
-                <a href="docs/Rapport_TP_Module7_BGP_Filtrage Fabrice olivier Lamine TINE M1 RESI(1).pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+        <div class="card">
+            <div>
+                <h3 class="card-title">Routage BGP & Filtrage de Routes (Module 7)</h3>
+                <p class="card-desc">Configuration des politiques de filtrage BGP et gestion des préfixes entre systèmes autonomes.</p>
+            </div>
+            <div class="btn-group">
+                <a href="docs/Rapport_TP_Module7_BGP_Filtrage Fabrice olivier Lamine TINE M1 RESI(1).pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
                 <a href="docs/Rapport_TP_Module7_BGP_Filtrage Fabrice olivier Lamine TINE M1 RESI(1).pdf" download class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <h3 class="project-title">Architecture iBGP & eBGP (Module 6)</h3>
-            <p class="project-description">Mise en œuvre du routage iBGP interne et eBGP externe pour l'interconnexion de réseaux d'entreprise.</p>
-            <div class="actions">
-                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+        <div class="card">
+            <div>
+                <h3 class="card-title">Interconnexion iBGP & eBGP (Module 6)</h3>
+                <p class="card-desc">Déploiement de topologies réseaux complexes basées sur les protocoles de routage iBGP et eBGP.</p>
+            </div>
+            <div class="btn-group">
+                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
                 <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" download class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <h3 class="project-title">Configuration d'un Cluster (Haute Disponibilité)</h3>
-            <p class="project-description">Rapport technique sur l'installation et la configuration d'un cluster d'infrastructures pour garantir la haute disponibilité.</p>
-            <div class="actions">
-                <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+        <div class="card">
+            <div>
+                <h3 class="card-title">Configuration d'un Cluster (Haute Disponibilité)</h3>
+                <p class="card-desc">Installation, basculement de charge et tolérance aux pannes pour infrastructures de serveur.</p>
+            </div>
+            <div class="btn-group">
+                <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
                 <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" download class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <h3 class="project-title">Administration Systèmes Linux & Windows</h3>
-            <p class="project-description">Rapport complet couvrant l'administration système, la gestion des utilisateurs, des services et des politiques de sécurité.</p>
-            <div class="actions">
-                <a href="docs/Rapport_D'administration_systhème_Fabrice_Olivier_Lamine_TINE .pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+        <div class="card">
+            <div>
+                <h3 class="card-title">Administration Systèmes Linux & Windows</h3>
+                <p class="card-desc">Gestion des annuaires Active Directory, services réseaux (DNS, DHCP, SSH) et sécurité systèmes.</p>
+            </div>
+            <div class="btn-group">
+                <a href="docs/Rapport_D'administration_systhème_Fabrice_Olivier_Lamine_TINE .pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
                 <a href="docs/Rapport_D'administration_systhème_Fabrice_Olivier_Lamine_TINE .pdf" download class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <h3 class="project-title">Téléphonie sur IP (ToIP / VoIP)</h3>
-            <p class="project-description">Mise en place d'une solution de téléphonie IP d'entreprise, gestion du plan de numérotation et des protocoles de signalisation.</p>
-            <div class="actions">
-                <a href="docs/Rapport_Téléphonie_sur_ IP Fabrice Olivier Lamine TINE M1 RESI.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+        <div class="card">
+            <div>
+                <h3 class="card-title">Téléphonie sur IP (ToIP / VoIP)</h3>
+                <p class="card-desc">Architecture VoIP, déploiement d'IPBX, plans de numérotation et protocoles SIP.</p>
+            </div>
+            <div class="btn-group">
+                <a href="docs/Rapport_Téléphonie_sur_ IP Fabrice Olivier Lamine TINE M1 RESI.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
                 <a href="docs/Rapport_Téléphonie_sur_ IP Fabrice Olivier Lamine TINE M1 RESI.pdf" download class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <h3 class="project-title">Examen & Architecture de Stockage</h3>
-            <p class="project-description">Étude et rapport d'examen sur les architectures de stockage réseau (SAN, NAS, RAID et gestion des volumes).</p>
-            <div class="actions">
-                <a href="docs/Rappot_Examen_Stockage_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+        <div class="card">
+            <div>
+                <h3 class="card-title">Architectures de Stockage Réseau (SAN/NAS)</h3>
+                <p class="card-desc">Étude approfondie sur la gestion des baies de stockage, RAID et protocoles de stockage d'entreprise.</p>
+            </div>
+            <div class="btn-group">
+                <a href="docs/Rappot_Examen_Stockage_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
                 <a href="docs/Rappot_Examen_Stockage_Fabrice_Olivier_Lamine_TINE.pdf" download class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
-        <div class="project-card">
-            <h3 class="project-title">Machine Learning - Régression Linéaire Détaillée</h3>
-            <p class="project-description">Rapport détaillé sur la modélisation statistique, l'entraînement de régression linéaire et l'évaluation des métriques sous Python.</p>
-            <div class="actions">
-                <a href="docs/Rapport_Regression_Lineaire_Detaille.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
+        <div class="card">
+            <div>
+                <h3 class="card-title">Machine Learning - Régression Linéaire</h3>
+                <p class="card-desc">Modélisation prédictive, analyse de données et évaluation des modèles de régression avec Python.</p>
+            </div>
+            <div class="btn-group">
+                <a href="docs/Rapport_Regression_Lineaire_Detaille.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
                 <a href="docs/Rapport_Regression_Lineaire_Detaille.pdf" download class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
-        <!-- ==================================================================== -->
-        <!-- INSTRUCTION POUR AJOUTER UN NOUVEAU PROJET À L'AVENIR :             -->
-        <!-- Copiez-collez le bloc ci-dessous et modifiez les textes et chemins : -->
-        <!--                                                                      -->
-        <!-- 
-        <div class="project-card">
-            <h3 class="project-title">Titre du nouveau projet</h3>
-            <p class="project-description">Description rapide du projet ici...</p>
-            <div class="actions">
-                <a href="docs/Nom_Du_Fichier.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser (PDF)</a>
-                <a href="docs/Nom_Du_Fichier.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+        <!-- =================================================================== -->
+        <!-- 💡 COMMENTAIRE : POUR AJOUTER UN NOUVEAU PROJET PLUS TARD         -->
+        <!-- Duplique le bloc <div class="card">...</div> ci-dessous :          -->
+        <!--                                                                     -->
+        <!--
+        <div class="card">
+            <div>
+                <h3 class="card-title">Titre du Nouveau Projet</h3>
+                <p class="card-desc">Description courte du projet...</p>
             </div>
-        </div> 
+            <div class="btn-group">
+                <a href="docs/NOM_DU_FICHIER.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
+                <a href="docs/NOM_DU_FICHIER.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+            </div>
+        </div>
         -->
-        <!-- ==================================================================== -->
+        <!-- =================================================================== -->
 
     </div>
 
