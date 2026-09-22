@@ -19,7 +19,8 @@
             --accent-amber-bg: #fffbeb;
             --accent-amber-border: #fcd34d;
             --accent-green: #16a34a;
-            --card-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
+            --card-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.18), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
+            --modal-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.35);
         }
 
         * {
@@ -36,7 +37,7 @@
             position: relative;
         }
 
-        /* Fond avec fond.jpg bien visible et contrasté */
+        /* Fond avec fond.jpg bien visible */
         body::before {
             content: "";
             position: fixed;
@@ -53,13 +54,13 @@
             margin: 0 auto;
         }
 
-        /* EN-TÊTE / PROFIL AVEC OMBRE NETTE */
+        /* EN-TÊTE / PROFIL */
         .profile-card {
             background: rgba(255, 255, 255, 0.95);
             border: 2px solid var(--border-color);
             border-radius: 16px;
             padding: 30px;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+            box-shadow: var(--card-shadow);
             margin-bottom: 35px;
             backdrop-filter: blur(4px);
         }
@@ -207,7 +208,7 @@
             border-radius: 4px;
         }
 
-        /* CARTES FICHIERS AVEC OMBRE MARQUÉE ET RÉVÉLATION DU FOND */
+        /* CARTES FICHIERS */
         .card {
             background: rgba(255, 255, 255, 0.95);
             border: 2px solid var(--border-color);
@@ -227,7 +228,7 @@
         .card:hover {
             border-color: var(--accent-blue);
             transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22);
+            box-shadow: 0 14px 28px rgba(15, 23, 42, 0.22);
         }
 
         .card-title {
@@ -245,7 +246,6 @@
             flex-grow: 1;
         }
 
-        /* BOUTONS COMPACTS EN VERTICAL */
         .btn-group {
             display: flex;
             flex-direction: column;
@@ -293,48 +293,100 @@
             background-color: #fef3c7;
         }
 
-        /* ESPACE ADMIN */
+        /* ESPACE ADMIN MODERNE - BARRE VERTICALE A GAUCHE + DEFILEMENT CONTENU A DROITE */
         .admin-dashboard {
             display: none;
             background: #ffffff;
             border: 2px solid var(--accent-blue);
-            border-radius: 14px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 35px;
+            box-shadow: var(--modal-shadow);
         }
 
-        .admin-tabs {
+        .admin-layout {
             display: flex;
-            gap: 10px;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            gap: 20px;
+            min-height: 400px;
         }
 
-        .tab-btn {
+        .admin-sidebar {
+            width: 240px;
+            border-right: 2px solid var(--border-color);
+            padding-right: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 6px 0 12px -6px rgba(15, 23, 42, 0.08);
+        }
+
+        .admin-nav-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .admin-nav-btn {
             background: #f8fafc;
             border: 1px solid var(--border-color);
-            padding: 8px 16px;
-            border-radius: 6px;
+            padding: 12px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 700;
             font-size: 0.88em;
             color: var(--text-secondary);
+            text-align: left;
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        .tab-btn.active {
+        .admin-nav-btn:hover, .admin-nav-btn.active {
             background: var(--accent-blue);
             color: #ffffff;
             border-color: var(--accent-blue);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
         }
 
-        .tab-content {
+        .admin-content-area {
+            flex: 1;
+            padding-left: 5px;
+        }
+
+        .tab-panel {
             display: none;
         }
 
-        .tab-content.active {
+        .tab-panel.active {
             display: block;
+        }
+
+        /* LISTE COMPACTE DES FICHIERS POUR L'ADMIN (SANS BOUTONS) */
+        .admin-file-list {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 250px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .admin-file-item {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-file-item:hover {
+            background: #e2e8f0;
+            border-color: var(--accent-blue);
         }
 
         .form-group {
@@ -360,12 +412,12 @@
             font-size: 0.9em;
         }
 
-        /* MODALE POP-UP */
+        /* MODALE POP-UP AVEC PROFONDEUR/SHADOW ACCENTUÉES */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(2px);
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(3px);
             display: none;
             justify-content: center;
             align-items: center;
@@ -374,12 +426,12 @@
 
         .modal-box {
             background: #ffffff;
-            border-radius: 12px;
+            border-radius: 14px;
             width: 90%;
             max-width: 480px;
             padding: 25px;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
-            border: 1px solid var(--border-color);
+            box-shadow: var(--modal-shadow);
+            border: 2px solid var(--border-color);
         }
 
         .modal-header {
@@ -421,6 +473,16 @@
         }
 
         @media (max-width: 768px) {
+            .admin-layout {
+                flex-direction: column;
+            }
+            .admin-sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 2px solid var(--border-color);
+                padding-bottom: 15px;
+                padding-right: 0;
+            }
             .profile-header-main {
                 flex-direction: column;
                 text-align: center;
@@ -435,69 +497,103 @@
 
 <div class="container">
 
-    <!-- PANNEAU ADMIN SÉCURISÉ (ACCÈS : CTRL+SHIFT+A OU 3 CLICS SUR LE NOM) -->
+    <!-- PANNEAU ADMIN RECONCEPTUALISÉ (BARRE VERTICALE A GAUCHE ET CONTENU A DROITE) -->
     <div id="adminPanel" class="admin-dashboard">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-            <h3 style="margin: 0; color: var(--accent-blue);">Espace Administration</h3>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
+            <h3 style="margin: 0; color: var(--accent-blue);">Tableau de Bord Administration</h3>
             <button class="btn btn-secondary" style="max-width: 120px;" onclick="logoutAdmin()">Déconnexion</button>
         </div>
 
-        <div class="admin-tabs">
-            <button class="tab-btn active" onclick="switchTab(event, 'tabProfile')">Profil & Infos</button>
-            <button class="tab-btn" onclick="switchTab(event, 'tabAddDoc')">Ajouter un Fichier</button>
-            <button class="tab-btn" onclick="switchTab(event, 'tabStats')">Statistiques</button>
-        </div>
+        <div class="admin-layout">
+            <!-- BARRE DE NAVIGATION VERTICALE (GAUCHE) -->
+            <div class="admin-sidebar">
+                <div class="admin-nav-btns">
+                    <button class="admin-nav-btn active" onclick="switchAdminTab(event, 'panelProfile')">👤 Profil & Infos</button>
+                    <button class="admin-nav-btn" onclick="switchAdminTab(event, 'panelAddCertif')">📜 Ajouter Certification</button>
+                    <button class="admin-nav-btn" onclick="switchAdminTab(event, 'panelAddTP')">🖥️ Ajouter Travail Pratique</button>
+                    <button class="admin-nav-btn" onclick="switchAdminTab(event, 'panelStats')">📊 Statistiques</button>
+                </div>
+                <!-- BOUTON DE VALIDATION UNIQUE EN BAS DE LA BARRE -->
+                <button class="btn btn-primary" style="margin-top: 20px; padding: 10px;" onclick="saveAdminChanges()">Valider Modifications</button>
+            </div>
 
-        <!-- ONGLET 1 : PROFIL -->
-        <div id="tabProfile" class="tab-content active">
-            <div class="form-group">
-                <label>Photo de Profil (Fichier) :</label>
-                <input type="text" id="adminPhotoInput" value="photo.jpg">
-            </div>
-            <div class="form-group">
-                <label>Téléphone :</label>
-                <input type="text" id="adminPhoneInput" value="+221 77 104 90 53">
-            </div>
-            <div class="form-group">
-                <label>E-mail :</label>
-                <input type="email" id="adminEmailInput" value="fabriceoliviertine@outlook.com">
-            </div>
-            <div class="form-group">
-                <label>Description du Profil :</label>
-                <textarea id="adminBioInput" rows="3"></textarea>
-            </div>
-            <button class="btn btn-primary" onclick="saveProfileChanges()">Valider les modifications du profil</button>
-        </div>
+            <!-- CONTENU DYNAMIQUE (DROITE) -->
+            <div class="admin-content-area">
+                
+                <!-- PANNEAU PROFIL -->
+                <div id="panelProfile" class="tab-panel active">
+                    <h4 style="margin-top:0;">Modifier les Informations de Profil</h4>
+                    <div class="form-group">
+                        <label>Photo de Profil (Fichier) :</label>
+                        <input type="text" id="adminPhotoInput" value="photo.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label>Téléphone :</label>
+                        <input type="text" id="adminPhoneInput" value="+221 77 104 90 53">
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail :</label>
+                        <input type="email" id="adminEmailInput" value="fabriceoliviertine@outlook.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Description du Profil :</label>
+                        <textarea id="adminBioInput" rows="4"></textarea>
+                    </div>
+                </div>
 
-        <!-- ONGLET 2 : AJOUT DE FICHIER -->
-        <div id="tabAddDoc" class="tab-content">
-            <div class="form-group">
-                <label>Type de Document :</label>
-                <select id="newDocType">
-                    <option value="certif">Certification</option>
-                    <option value="tp">Travaux Pratiques / Projet</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Titre du Document :</label>
-                <input type="text" id="newDocTitle" placeholder="Ex: Certification Cisco CCNA">
-            </div>
-            <div class="form-group">
-                <label>Nom du Fichier PDF (dans docs/) :</label>
-                <input type="text" id="newDocFile" placeholder="nom_du_fichier.pdf">
-            </div>
-            <div class="form-group">
-                <label>Description courte :</label>
-                <textarea id="newDocDesc" rows="2" placeholder="Brève description..."></textarea>
-            </div>
-            <button class="btn btn-primary" onclick="addNewDocument()">Ajouter le document</button>
-        </div>
+                <!-- PANNEAU NOUVELLE CERTIFICATION + APERÇU COMPACT -->
+                <div id="panelAddCertif" class="tab-panel">
+                    <h4 style="margin-top:0;">Nouveau Certificat</h4>
+                    <div class="form-group">
+                        <label>Titre de la Certification :</label>
+                        <input type="text" id="certifTitleInput" placeholder="Ex: Certification Cisco CCNA">
+                    </div>
+                    <div class="form-group">
+                        <label>Nom du Fichier PDF (dans docs/) :</label>
+                        <input type="text" id="certifFileInput" placeholder="mon_certificat.pdf">
+                    </div>
+                    <div class="form-group">
+                        <label>Description :</label>
+                        <textarea id="certifDescInput" rows="2" placeholder="Courte description..."></textarea>
+                    </div>
 
-        <!-- ONGLET 3 : STATISTIQUES -->
-        <div id="tabStats" class="tab-content">
-            <p><strong>Visites du site :</strong> <span id="statViews">0</span></p>
-            <p><strong>Consultations PDF :</strong> <span id="statClicks">0</span></p>
-            <p><strong>Téléchargements :</strong> <span id="statDownloads">0</span></p>
+                    <h5 style="margin-bottom: 5px; color: var(--text-secondary);">Certifications existantes (Visualisation seule) :</h5>
+                    <div class="admin-file-list" id="adminCertifList">
+                        <!-- Généré dynamiquement -->
+                    </div>
+                </div>
+
+                <!-- PANNEAU NOUVEAU TP + APERÇU COMPACT -->
+                <div id="panelAddTP" class="tab-panel">
+                    <h4 style="margin-top:0;">Nouveau Travail Pratique</h4>
+                    <div class="form-group">
+                        <label>Titre du Projet / TP :</label>
+                        <input type="text" id="tpTitleInput" placeholder="Ex: Configuration BGP">
+                    </div>
+                    <div class="form-group">
+                        <label>Nom du Fichier PDF (dans docs/) :</label>
+                        <input type="text" id="tpFileInput" placeholder="mon_rapport.pdf">
+                    </div>
+                    <div class="form-group">
+                        <label>Description :</label>
+                        <textarea id="tpDescInput" rows="2" placeholder="Courte description..."></textarea>
+                    </div>
+
+                    <h5 style="margin-bottom: 5px; color: var(--text-secondary);">Travaux Pratiques existants (Visualisation seule) :</h5>
+                    <div class="admin-file-list" id="adminTPList">
+                        <!-- Généré dynamiquement -->
+                    </div>
+                </div>
+
+                <!-- PANNEAU STATISTIQUES -->
+                <div id="panelStats" class="tab-panel">
+                    <h4 style="margin-top:0;">Statistiques de la Plateforme</h4>
+                    <p><strong>Visites Totales :</strong> <span id="statViews">0</span></p>
+                    <p><strong>Consultations PDF :</strong> <span id="statClicks">0</span></p>
+                    <p><strong>Téléchargements :</strong> <span id="statDownloads">0</span></p>
+                </div>
+
+            </div>
         </div>
     </div>
 
@@ -541,7 +637,7 @@
     </header>
 
 
-    <!-- SECTION 1 : CERTIFICATIONS (BOUTONS EN ALIGNEMENT VERTICAL) -->
+    <!-- SECTION 1 : CERTIFICATIONS -->
     <h2 class="section-header">Certifications & Accréditations</h2>
     <div class="horizontal-scroll" id="certifContainer">
 
@@ -592,7 +688,7 @@
     </div>
 
 
-    <!-- SECTION 2 : TRAVAUX PRATIQUES (BOUTONS EN ALIGNEMENT VERTICAL) -->
+    <!-- SECTION 2 : TRAVAUX PRATIQUES -->
     <h2 class="section-header">Travaux Pratiques & Projets</h2>
     <div class="horizontal-scroll" id="tpContainer">
 
@@ -660,11 +756,11 @@
 
 </div>
 
-<!-- POP-UP D'AVIS FORMSPREE -->
+<!-- POP-UP D'AVIS FORMSPREE CONSERVANT SON OMBRE DE PROFONDEUR -->
 <div id="feedbackModal" class="modal-overlay">
     <div class="modal-box">
         <div class="modal-header">
-            <h3 id="modalDocTitle">Laisser un avis</h3>
+            <h3 id="modalDocTitle" style="margin: 0;">Laisser un avis</h3>
             <button class="close-btn" onclick="closeFeedbackModal()">&times;</button>
         </div>
 
@@ -689,7 +785,7 @@
     </div>
 </div>
 
-<!-- POP-UP CONNEXION ADMIN -->
+<!-- POP-UP DE CONNEXION ADMIN (IDENTIFIANTS EXACTS ET SHADOWS ELEVÉS) -->
 <div id="authModal" class="modal-overlay">
     <div class="modal-box" style="max-width: 380px;">
         <div class="modal-header">
@@ -719,7 +815,6 @@
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 <script>
-    // STATISTIQUES EN LOCALSTORAGE
     function initStats() {
         let views = parseInt(localStorage.getItem('portfolio_views') || '0') + 1;
         localStorage.setItem('portfolio_views', views);
@@ -740,7 +835,6 @@
         document.getElementById('statDownloads').innerText = downloads;
     }
 
-    // MODALE AVIS
     function openFeedbackModal(docTitle) {
         document.getElementById('modalDocTitle').innerText = "Avis : " + docTitle;
         document.getElementById('targetSubject').value = "Avis sur : " + docTitle;
@@ -750,7 +844,6 @@
         document.getElementById('feedbackModal').style.display = 'none';
     }
 
-    // CONNEXION ADMIN
     function showAuthModal() {
         document.getElementById('authModal').style.display = 'flex';
     }
@@ -778,6 +871,7 @@
             let panel = document.getElementById('adminPanel');
             panel.style.display = 'block';
             document.getElementById('adminBioInput').value = document.getElementById('displayBio').innerText.trim();
+            populateAdminLists();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
             alert("Identifiants incorrects !");
@@ -808,15 +902,37 @@
         document.getElementById('adminPanel').style.display = 'none';
     }
 
-    function switchTab(evt, tabId) {
-        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+    /* NAVIGATION PAR BARRE VERTICALE DANS L'ADMIN */
+    function switchAdminTab(evt, panelId) {
+        document.querySelectorAll('.admin-nav-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
         
         evt.target.classList.add('active');
-        document.getElementById(tabId).classList.add('active');
+        document.getElementById(panelId).classList.add('active');
     }
 
-    function saveProfileChanges() {
+    /* REPLAY SANS BOUTONS DES FICHIERS POUR L'ADMINISTRATION */
+    function populateAdminLists() {
+        let certifList = document.getElementById('adminCertifList');
+        let tpList = document.getElementById('adminTPList');
+
+        certifList.innerHTML = '';
+        tpList.innerHTML = '';
+
+        document.querySelectorAll('#certifContainer .card').forEach(card => {
+            let title = card.querySelector('.card-title').innerText;
+            certifList.innerHTML += `<div class="admin-file-item">📄 ${title} <span>(Certificat)</span></div>`;
+        });
+
+        document.querySelectorAll('#tpContainer .card').forEach(card => {
+            let title = card.querySelector('.card-title').innerText;
+            tpList.innerHTML += `<div class="admin-file-item">📑 ${title} <span>(Rapport TP)</span></div>`;
+        });
+    }
+
+    /* VALIDER ET ENREGISTRER LES MODIFICATIONS ADMIN (BOUTON EN BAS A GAUCHE) */
+    function saveAdminChanges() {
+        // 1. Profil
         let newPhoto = document.getElementById('adminPhotoInput').value;
         let newPhone = document.getElementById('adminPhoneInput').value;
         let newEmail = document.getElementById('adminEmailInput').value;
@@ -833,51 +949,55 @@
         }
         if (newBio) document.getElementById('displayBio').innerText = newBio;
 
-        alert("Profil mis à jour à l'écran !");
-    }
+        // 2. Certification
+        let certTitle = document.getElementById('certifTitleInput').value;
+        let certFile = document.getElementById('certifFileInput').value;
+        let certDesc = document.getElementById('certifDescInput').value || "Nouvelle certification.";
 
-    function addNewDocument() {
-        let type = document.getElementById('newDocType').value;
-        let title = document.getElementById('newDocTitle').value;
-        let file = document.getElementById('newDocFile').value;
-        let desc = document.getElementById('newDocDesc').value || "Nouveau document d'infrastructure.";
-
-        if (!title || !file) {
-            alert("Veuillez renseigner le titre et le nom du fichier.");
-            return;
-        }
-
-        let html = '';
-        if (type === 'certif') {
-            html = `
+        if (certTitle && certFile) {
+            let htmlCert = `
             <div class="card">
                 <div>
-                    <h3 class="card-title">${title}</h3>
-                    <p class="card-desc">${desc}</p>
+                    <h3 class="card-title">${certTitle}</h3>
+                    <p class="card-desc">${certDesc}</p>
                 </div>
                 <div class="btn-group">
-                    <a href="docs/${file}" target="_blank" onclick="trackClick('${title}')" class="btn btn-primary">Visualiser</a>
-                    <button onclick="openFeedbackModal('${title}')" class="btn btn-feedback">Donner un avis</button>
+                    <a href="docs/${certFile}" target="_blank" onclick="trackClick('${certTitle}')" class="btn btn-primary">Visualiser</a>
+                    <button onclick="openFeedbackModal('${certTitle}')" class="btn btn-feedback">Donner un avis</button>
                 </div>
             </div>`;
-            document.getElementById('certifContainer').insertAdjacentHTML('beforeend', html);
-        } else {
-            html = `
-            <div class="card">
-                <div>
-                    <h3 class="card-title">${title}</h3>
-                    <p class="card-desc">${desc}</p>
-                </div>
-                <div class="btn-group">
-                    <a href="docs/${file}" target="_blank" onclick="trackClick('${title}')" class="btn btn-primary">Visualiser</a>
-                    <a href="docs/${file}" download onclick="trackDownload('${title}')" class="btn btn-secondary">Télécharger</a>
-                    <button onclick="openFeedbackModal('${title}')" class="btn btn-feedback">Donner un avis</button>
-                </div>
-            </div>`;
-            document.getElementById('tpContainer').insertAdjacentHTML('beforeend', html);
+            document.getElementById('certifContainer').insertAdjacentHTML('beforeend', htmlCert);
+            document.getElementById('certifTitleInput').value = '';
+            document.getElementById('certifFileInput').value = '';
+            document.getElementById('certifDescInput').value = '';
         }
 
-        alert("Nouveau fichier ajouté à la liste !");
+        // 3. TP
+        let tpTitle = document.getElementById('tpTitleInput').value;
+        let tpFile = document.getElementById('tpFileInput').value;
+        let tpDesc = document.getElementById('tpDescInput').value || "Nouveau travail pratique.";
+
+        if (tpTitle && tpFile) {
+            let htmlTP = `
+            <div class="card">
+                <div>
+                    <h3 class="card-title">${tpTitle}</h3>
+                    <p class="card-desc">${tpDesc}</p>
+                </div>
+                <div class="btn-group">
+                    <a href="docs/${tpFile}" target="_blank" onclick="trackClick('${tpTitle}')" class="btn btn-primary">Visualiser</a>
+                    <a href="docs/${tpFile}" download onclick="trackDownload('${tpTitle}')" class="btn btn-secondary">Télécharger</a>
+                    <button onclick="openFeedbackModal('${tpTitle}')" class="btn btn-feedback">Donner un avis</button>
+                </div>
+            </div>`;
+            document.getElementById('tpContainer').insertAdjacentHTML('beforeend', htmlTP);
+            document.getElementById('tpTitleInput').value = '';
+            document.getElementById('tpFileInput').value = '';
+            document.getElementById('tpDescInput').value = '';
+        }
+
+        populateAdminLists();
+        alert("Modifications enregistrées et appliquées avec succès !");
     }
 
     window.onload = initStats;
