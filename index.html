@@ -19,8 +19,8 @@
             --accent-amber-bg: #fffbeb;
             --accent-amber-border: #fcd34d;
             --accent-green: #16a34a;
-            --card-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.18), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
-            --modal-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.35);
+            --card-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.2), 0 8px 10px -6px rgba(15, 23, 42, 0.12);
+            --modal-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.45);
         }
 
         * {
@@ -37,12 +37,12 @@
             position: relative;
         }
 
-        /* Fond avec fond.jpg bien visible */
+        /* Fond avec fond.jpg bien clair et contrasté */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(241, 245, 249, 0.55), rgba(241, 245, 249, 0.65)), url('fond.jpg');
+            background-image: linear-gradient(rgba(241, 245, 249, 0.55), rgba(241, 245, 249, 0.65)), url('fond.jpg?v=2026');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -54,7 +54,7 @@
             margin: 0 auto;
         }
 
-        /* EN-TÊTE / PROFIL */
+        /* EN-TÊTE / PROFIL AVEC DE LA PROFONDEUR */
         .profile-card {
             background: rgba(255, 255, 255, 0.95);
             border: 2px solid var(--border-color);
@@ -78,7 +78,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-blue);
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.35);
             flex-shrink: 0;
         }
 
@@ -123,7 +123,7 @@
             border: 1px solid var(--border-color);
             color: var(--text-secondary);
             font-weight: 600;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.06);
         }
 
         .contact-item a {
@@ -136,7 +136,7 @@
             color: var(--accent-blue);
         }
 
-        /* BIO & CV */
+        /* BIO ET CV */
         .bio-section {
             display: flex;
             gap: 25px;
@@ -169,7 +169,7 @@
             display: block;
             text-align: center;
             transition: background 0.2s, transform 0.1s;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         .btn-cv:hover {
@@ -183,12 +183,12 @@
             color: var(--text-primary);
             font-weight: 800;
             margin: 35px 0 15px 0;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             padding: 6px 14px;
             border-left: 4px solid var(--accent-blue);
             border-radius: 4px;
             display: inline-block;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .horizontal-scroll {
@@ -208,7 +208,7 @@
             border-radius: 4px;
         }
 
-        /* CARTES FICHIERS */
+        /* CARTES DE FICHIERS */
         .card {
             background: rgba(255, 255, 255, 0.95);
             border: 2px solid var(--border-color);
@@ -228,7 +228,7 @@
         .card:hover {
             border-color: var(--accent-blue);
             transform: translateY(-4px);
-            box-shadow: 0 14px 28px rgba(15, 23, 42, 0.22);
+            box-shadow: 0 14px 28px rgba(15, 23, 42, 0.25);
         }
 
         .card-title {
@@ -293,7 +293,7 @@
             background-color: #fef3c7;
         }
 
-        /* ESPACE ADMIN MODERNE - BARRE VERTICALE A GAUCHE + DEFILEMENT CONTENU A DROITE */
+        /* BARRE VERTICALE ET ESPACE ADMIN */
         .admin-dashboard {
             display: none;
             background: #ffffff;
@@ -307,7 +307,7 @@
         .admin-layout {
             display: flex;
             gap: 20px;
-            min-height: 400px;
+            min-height: 380px;
         }
 
         .admin-sidebar {
@@ -317,7 +317,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 6px 0 12px -6px rgba(15, 23, 42, 0.08);
         }
 
         .admin-nav-btns {
@@ -337,7 +336,7 @@
             color: var(--text-secondary);
             text-align: left;
             transition: all 0.2s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .admin-nav-btn:hover, .admin-nav-btn.active {
@@ -360,13 +359,12 @@
             display: block;
         }
 
-        /* LISTE COMPACTE DES FICHIERS POUR L'ADMIN (SANS BOUTONS) */
         .admin-file-list {
             margin-top: 15px;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            max-height: 250px;
+            max-height: 220px;
             overflow-y: auto;
             padding-right: 5px;
         }
@@ -377,16 +375,10 @@
             padding: 10px 12px;
             border-radius: 8px;
             font-size: 0.85em;
-            cursor: pointer;
-            transition: background 0.2s, border-color 0.2s;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .admin-file-item:hover {
-            background: #e2e8f0;
-            border-color: var(--accent-blue);
+            font-weight: 600;
         }
 
         .form-group {
@@ -412,11 +404,11 @@
             font-size: 0.9em;
         }
 
-        /* MODALE POP-UP AVEC PROFONDEUR/SHADOW ACCENTUÉES */
+        /* POP-UPS AVEC SHADOW DE PROFONDEUR */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(3px);
             display: none;
             justify-content: center;
@@ -497,7 +489,7 @@
 
 <div class="container">
 
-    <!-- PANNEAU ADMIN RECONCEPTUALISÉ (BARRE VERTICALE A GAUCHE ET CONTENU A DROITE) -->
+    <!-- PANNEAU ADMIN SECRET (IDENTIFIANTS : Fabrice / f@bolitine/123) -->
     <div id="adminPanel" class="admin-dashboard">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
             <h3 style="margin: 0; color: var(--accent-blue);">Tableau de Bord Administration</h3>
@@ -505,7 +497,7 @@
         </div>
 
         <div class="admin-layout">
-            <!-- BARRE DE NAVIGATION VERTICALE (GAUCHE) -->
+            <!-- BARRE VERTICALE À GAUCHE -->
             <div class="admin-sidebar">
                 <div class="admin-nav-btns">
                     <button class="admin-nav-btn active" onclick="switchAdminTab(event, 'panelProfile')">👤 Profil & Infos</button>
@@ -513,11 +505,11 @@
                     <button class="admin-nav-btn" onclick="switchAdminTab(event, 'panelAddTP')">🖥️ Ajouter Travail Pratique</button>
                     <button class="admin-nav-btn" onclick="switchAdminTab(event, 'panelStats')">📊 Statistiques</button>
                 </div>
-                <!-- BOUTON DE VALIDATION UNIQUE EN BAS DE LA BARRE -->
-                <button class="btn btn-primary" style="margin-top: 20px; padding: 10px;" onclick="saveAdminChanges()">Valider Modifications</button>
+                <!-- BOUTON DE VALIDATION EN BAS À GAUCHE -->
+                <button class="btn btn-primary" style="margin-top: 20px; padding: 11px;" onclick="saveAdminChanges()">Valider Modifications</button>
             </div>
 
-            <!-- CONTENU DYNAMIQUE (DROITE) -->
+            <!-- CONTENU DYNAMIQUE À DROITE -->
             <div class="admin-content-area">
                 
                 <!-- PANNEAU PROFIL -->
@@ -541,7 +533,7 @@
                     </div>
                 </div>
 
-                <!-- PANNEAU NOUVELLE CERTIFICATION + APERÇU COMPACT -->
+                <!-- PANNEAU NOUVELLE CERTIFICATION -->
                 <div id="panelAddCertif" class="tab-panel">
                     <h4 style="margin-top:0;">Nouveau Certificat</h4>
                     <div class="form-group">
@@ -558,12 +550,10 @@
                     </div>
 
                     <h5 style="margin-bottom: 5px; color: var(--text-secondary);">Certifications existantes (Visualisation seule) :</h5>
-                    <div class="admin-file-list" id="adminCertifList">
-                        <!-- Généré dynamiquement -->
-                    </div>
+                    <div class="admin-file-list" id="adminCertifList"></div>
                 </div>
 
-                <!-- PANNEAU NOUVEAU TP + APERÇU COMPACT -->
+                <!-- PANNEAU NOUVEAU TP -->
                 <div id="panelAddTP" class="tab-panel">
                     <h4 style="margin-top:0;">Nouveau Travail Pratique</h4>
                     <div class="form-group">
@@ -580,9 +570,7 @@
                     </div>
 
                     <h5 style="margin-bottom: 5px; color: var(--text-secondary);">Travaux Pratiques existants (Visualisation seule) :</h5>
-                    <div class="admin-file-list" id="adminTPList">
-                        <!-- Généré dynamiquement -->
-                    </div>
+                    <div class="admin-file-list" id="adminTPList"></div>
                 </div>
 
                 <!-- PANNEAU STATISTIQUES -->
@@ -600,7 +588,7 @@
     <!-- PROFIL PRINCIPAL -->
     <header class="profile-card">
         <div class="profile-header-main">
-            <img src="photo.jpg" id="displayPhoto" alt="Fabrice Olivier Lamine TINE" class="profile-avatar">
+            <img src="photo.jpg?v=2026" id="displayPhoto" alt="Fabrice Olivier Lamine TINE" class="profile-avatar">
             
             <div class="profile-details">
                 <h1 id="authorName" onclick="handleNameClicks()">Fabrice Olivier Lamine TINE</h1>
@@ -756,7 +744,7 @@
 
 </div>
 
-<!-- POP-UP D'AVIS FORMSPREE CONSERVANT SON OMBRE DE PROFONDEUR -->
+<!-- POP-UP D'AVIS FORMSPREE -->
 <div id="feedbackModal" class="modal-overlay">
     <div class="modal-box">
         <div class="modal-header">
@@ -785,7 +773,7 @@
     </div>
 </div>
 
-<!-- POP-UP DE CONNEXION ADMIN (IDENTIFIANTS EXACTS ET SHADOWS ELEVÉS) -->
+<!-- POP-UP AUTHENTIFICATION ADMIN -->
 <div id="authModal" class="modal-overlay">
     <div class="modal-box" style="max-width: 380px;">
         <div class="modal-header">
@@ -902,7 +890,6 @@
         document.getElementById('adminPanel').style.display = 'none';
     }
 
-    /* NAVIGATION PAR BARRE VERTICALE DANS L'ADMIN */
     function switchAdminTab(evt, panelId) {
         document.querySelectorAll('.admin-nav-btn').forEach(btn => btn.classList.remove('active'));
         document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
@@ -911,7 +898,6 @@
         document.getElementById(panelId).classList.add('active');
     }
 
-    /* REPLAY SANS BOUTONS DES FICHIERS POUR L'ADMINISTRATION */
     function populateAdminLists() {
         let certifList = document.getElementById('adminCertifList');
         let tpList = document.getElementById('adminTPList');
@@ -930,9 +916,7 @@
         });
     }
 
-    /* VALIDER ET ENREGISTRER LES MODIFICATIONS ADMIN (BOUTON EN BAS A GAUCHE) */
     function saveAdminChanges() {
-        // 1. Profil
         let newPhoto = document.getElementById('adminPhotoInput').value;
         let newPhone = document.getElementById('adminPhoneInput').value;
         let newEmail = document.getElementById('adminEmailInput').value;
@@ -949,7 +933,6 @@
         }
         if (newBio) document.getElementById('displayBio').innerText = newBio;
 
-        // 2. Certification
         let certTitle = document.getElementById('certifTitleInput').value;
         let certFile = document.getElementById('certifFileInput').value;
         let certDesc = document.getElementById('certifDescInput').value || "Nouvelle certification.";
@@ -972,7 +955,6 @@
             document.getElementById('certifDescInput').value = '';
         }
 
-        // 3. TP
         let tpTitle = document.getElementById('tpTitleInput').value;
         let tpFile = document.getElementById('tpFileInput').value;
         let tpDesc = document.getElementById('tpDescInput').value || "Nouveau travail pratique.";
