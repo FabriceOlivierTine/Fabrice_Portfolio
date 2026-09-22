@@ -8,7 +8,7 @@
         :root {
             --bg-main: #f8fafc;
             --card-bg: #ffffff;
-            --border-color: #cbd5e1;
+            --border-color: #64748b;
             --text-primary: #0f172a;
             --text-secondary: #334155;
             --accent-blue: #2563eb;
@@ -19,9 +19,9 @@
             --accent-amber-bg: #fffbeb;
             --accent-amber-border: #fcd34d;
             --accent-green: #16a34a;
-            /* Ombres sombres et marquées pour faire ressortir sur fond net */
-            --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.35), 0 5px 15px rgba(0, 0, 0, 0.2);
-            --modal-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+            /* Ombres portées très fortes et nettes */
+            --heavy-shadow: 0 15px 35px rgba(15, 23, 42, 0.35), 0 5px 15px rgba(0, 0, 0, 0.2);
+            --modal-shadow: 0 25px 60px rgba(15, 23, 42, 0.5);
         }
 
         * {
@@ -30,6 +30,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
             color: var(--text-primary);
             margin: 0;
             padding: 30px 15px;
@@ -37,12 +38,12 @@
             position: relative;
         }
 
-        /* FOND NORMALE ET NET SANS VOILE MASQUANT */
+        /* FOND TOTALEMENT NET ET BIEN VISIBLE SANS FLOU */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(15, 23, 42, 0.15), rgba(15, 23, 42, 0.2)), url('fond.jpg?v=2026_3');
+            background-image: linear-gradient(rgba(248, 250, 252, 0.40), rgba(248, 250, 252, 0.45)), url('fond.jpg?v=2026_FINAL');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -50,19 +51,18 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: 0 auto;
         }
 
-        /* EN-TÊTE / PROFIL AVEC OMBLAGE PRONONCÉ */
+        /* CARTE PROFIL AVEC OMBRE PROFONDE */
         .profile-card {
-            background: rgba(255, 255, 255, 0.96);
+            background: rgba(255, 255, 255, 0.98);
             border: 2px solid var(--border-color);
             border-radius: 16px;
             padding: 30px;
-            box-shadow: var(--card-shadow);
+            box-shadow: var(--heavy-shadow);
             margin-bottom: 35px;
-            backdrop-filter: blur(2px);
         }
 
         .profile-header-main {
@@ -123,7 +123,7 @@
             border: 1px solid var(--border-color);
             color: var(--text-secondary);
             font-weight: 600;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
         .contact-item a {
@@ -161,7 +161,7 @@
         .btn-cv {
             background: var(--accent-blue);
             color: #ffffff;
-            padding: 10px 18px;
+            padding: 11px 18px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
@@ -169,7 +169,7 @@
             display: block;
             text-align: center;
             transition: background 0.2s, transform 0.1s;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
         }
 
         .btn-cv:hover {
@@ -183,16 +183,16 @@
             color: var(--text-primary);
             font-weight: 800;
             margin: 35px 0 20px 0;
-            background: rgba(255, 255, 255, 0.96);
+            background: #ffffff;
             padding: 8px 16px;
             border-left: 5px solid var(--accent-blue);
             border-radius: 6px;
             display: inline-block;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             border: 1px solid var(--border-color);
         }
 
-        /* GRILLE 3 COLONNES HORIZONTALES */
+        /* GRILLE DE 3 FICHIERS ALIGNÉS À L'HORIZONTALE */
         .grid-3-columns {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -200,32 +200,23 @@
             margin-bottom: 30px;
         }
 
-        /* CARTES AVEC BADGE ET SHADOWS */
+        /* CARTES AVEC DE TRÈS BELLES OMBRES DÉTACHÉES DU FOND */
         .card {
-            background: rgba(255, 255, 255, 0.96);
+            background: #ffffff;
             border: 2px solid var(--border-color);
             border-radius: 14px;
             padding: 18px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: var(--card-shadow);
+            box-shadow: var(--heavy-shadow);
             transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-            backdrop-filter: blur(2px);
-            position: relative;
         }
 
         .card:hover {
             border-color: var(--accent-blue);
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
-        }
-
-        .badge-img {
-            width: 48px;
-            height: 48px;
-            object-fit: contain;
-            margin-bottom: 10px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.4);
         }
 
         .card-title {
@@ -243,7 +234,14 @@
             flex-grow: 1;
         }
 
-        /* BOUTONS HORIZONTAUX ET RECTANGULAIRES COMPACTS */
+        .badge-img {
+            max-width: 80px;
+            height: auto;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* BOUTONS HORIZONTAUX ALIGNÉS ET COMPACTS */
         .btn-group-horizontal {
             display: flex;
             gap: 6px;
@@ -253,7 +251,7 @@
         .btn {
             flex: 1;
             padding: 7px 4px;
-            font-size: 0.75em;
+            font-size: 0.76em;
             font-weight: 700;
             text-decoration: none;
             border-radius: 6px;
@@ -292,10 +290,10 @@
             background-color: #fef3c7;
         }
 
-        /* ESPACE ADMIN & SIDEBAR */
+        /* TABLEAU DE BORD ADMIN AVEC NAVIGATION VERTICALE A GAUCHE */
         .admin-dashboard {
             display: none;
-            background: rgba(255, 255, 255, 0.98);
+            background: #ffffff;
             border: 2px solid var(--accent-blue);
             border-radius: 16px;
             padding: 20px;
@@ -335,14 +333,14 @@
             color: var(--text-secondary);
             text-align: left;
             transition: all 0.2s;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
         .admin-nav-btn:hover, .admin-nav-btn.active {
             background: var(--accent-blue);
             color: #ffffff;
             border-color: var(--accent-blue);
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
         }
 
         .admin-content-area {
@@ -403,11 +401,11 @@
             font-size: 0.9em;
         }
 
-        /* POP-UPS MODALES */
+        /* POP-UPS MODALES AVEC DE FORTE OMBRES */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.78);
             backdrop-filter: blur(4px);
             display: none;
             justify-content: center;
@@ -497,7 +495,7 @@
 
 <div class="container">
 
-    <!-- PANNEAU ADMIN SECRET -->
+    <!-- PANNEAU ADMIN SECRET (IDENTIFIANT: Fabrice / MOT DE PASSE: f@bolitine/123) -->
     <div id="adminPanel" class="admin-dashboard">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
             <h3 style="margin: 0; color: var(--accent-blue);">Tableau de Bord Administration</h3>
@@ -589,7 +587,7 @@
     <!-- PROFIL PRINCIPAL -->
     <header class="profile-card">
         <div class="profile-header-main">
-            <img src="photo.jpg?v=2026_3" id="displayPhoto" alt="Fabrice Olivier Lamine TINE" class="profile-avatar">
+            <img src="photo.jpg?v=2026_FINAL" id="displayPhoto" alt="Fabrice Olivier Lamine TINE" class="profile-avatar">
             
             <div class="profile-details">
                 <h1 id="authorName" onclick="handleNameClicks()">Fabrice Olivier Lamine TINE</h1>
@@ -626,13 +624,13 @@
     </header>
 
 
-    <!-- SECTION 1 : CERTIFICATIONS (AVEC BADGE AWS REINTEGRE ET DESSIN PAR 3) -->
+    <!-- SECTION 1 : CERTIFICATIONS (ALIGNÉES PAR 3 EN GRILLE) -->
     <h2 class="section-header">Certifications & Accréditations</h2>
     <div class="grid-3-columns" id="certifContainer">
 
         <div class="card">
             <div>
-                <h3 class="card-title">Scrum Fundamentals Certified</h3>
+                <h3 class="card-title">Scrum Fundamentals</h3>
                 <p class="card-desc">Certification sur les méthodologies agiles et le cadre Scrum.</p>
             </div>
             <div class="btn-group-horizontal">
@@ -643,7 +641,6 @@
 
         <div class="card">
             <div>
-                <!-- BADGE AWS INCLU -->
                 <img src="badge.png" alt="AWS Badge" class="badge-img" onerror="this.style.display='none'">
                 <h3 class="card-title">AWS Cloud Architecting</h3>
                 <p class="card-desc">Accréditation sur les architectures Cloud AWS scalables.</p>
@@ -679,7 +676,7 @@
     </div>
 
 
-    <!-- SECTION 2 : TOUS LES TRAVAUX PRATIQUES (TOUS RESTAURÉS) -->
+    <!-- SECTION 2 : ENSEMBLE COMPLET DES TRAVAUX PRATIQUES (ALIGNÉS PAR 3 EN GRILLE) -->
     <h2 class="section-header">Travaux Pratiques & Projets</h2>
     <div class="grid-3-columns" id="tpContainer">
 
@@ -725,8 +722,8 @@
                 <p class="card-desc">Routage BGP interne et externe complexe.</p>
             </div>
             <div class="btn-group-horizontal">
-                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" target="_blank" onclick="trackClick('BGP6')" class="btn btn-primary">Visualiser</a>
-                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" download onclick="trackDownload('BGP6')" class="btn btn-secondary">Télécharger</a>
+                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" target="_blank" onclick="trackClick('BGP6')" class="btn btn-primary">Visualiser</a>
+                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" download onclick="trackDownload('BGP6')" class="btn btn-secondary">Télécharger</a>
                 <button onclick="openFeedbackModal('iBGP & eBGP')" class="btn btn-feedback">Avis</button>
             </div>
         </div>
@@ -740,6 +737,54 @@
                 <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" target="_blank" onclick="trackClick('Cluster')" class="btn btn-primary">Visualiser</a>
                 <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" download onclick="trackDownload('Cluster')" class="btn btn-secondary">Télécharger</a>
                 <button onclick="openFeedbackModal('Cluster Haute Disponibilité')" class="btn btn-feedback">Avis</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <h3 class="card-title">Administration Systèmes</h3>
+                <p class="card-desc">Gestion des services d'annuaire AD DS, GPO, DNS, DHCP Linux/Windows.</p>
+            </div>
+            <div class="btn-group-horizontal">
+                <a href="docs/Rapport_D'administration_systhème_Fabrice_Olivier_Lamine_TINE .pdf" target="_blank" onclick="trackClick('SysAdmin')" class="btn btn-primary">Visualiser</a>
+                <a href="docs/Rapport_D'administration_systhème_Fabrice_Olivier_Lamine_TINE .pdf" download onclick="trackDownload('SysAdmin')" class="btn btn-secondary">Télécharger</a>
+                <button onclick="openFeedbackModal('Administration Systemes')" class="btn btn-feedback">Avis</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <h3 class="card-title">Téléphonie sur IP (VoIP)</h3>
+                <p class="card-desc">Configuration d'IPBX, gestion des protocoles SIP et VoIP.</p>
+            </div>
+            <div class="btn-group-horizontal">
+                <a href="docs/Rapport_Téléphonie_sur_ IP Fabrice Olivier Lamine TINE M1 RESI.pdf" target="_blank" onclick="trackClick('VoIP')" class="btn btn-primary">Visualiser</a>
+                <a href="docs/Rapport_Téléphonie_sur_ IP Fabrice Olivier Lamine TINE M1 RESI.pdf" download onclick="trackDownload('VoIP')" class="btn btn-secondary">Télécharger</a>
+                <button onclick="openFeedbackModal('Telephonie sur IP')" class="btn btn-feedback">Avis</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <h3 class="card-title">Stockage Réseau (SAN/NAS)</h3>
+                <p class="card-desc">Analyse des baies de stockage, RAID et gestion SAN/NAS.</p>
+            </div>
+            <div class="btn-group-horizontal">
+                <a href="docs/Rappot_Examen_Stockage_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" onclick="trackClick('Stockage')" class="btn btn-primary">Visualiser</a>
+                <a href="docs/Rappot_Examen_Stockage_Fabrice_Olivier_Lamine_TINE.pdf" download onclick="trackDownload('Stockage')" class="btn btn-secondary">Télécharger</a>
+                <button onclick="openFeedbackModal('Stockage Reseau SAN/NAS')" class="btn btn-feedback">Avis</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <h3 class="card-title">Machine Learning - Régression</h3>
+                <p class="card-desc">Modeles statistiques prédictifs avec Python et Scikit-learn.</p>
+            </div>
+            <div class="btn-group-horizontal">
+                <a href="docs/Rapport_Regression_Lineaire_Detaille.pdf" target="_blank" onclick="trackClick('ML')" class="btn btn-primary">Visualiser</a>
+                <a href="docs/Rapport_Regression_Lineaire_Detaille.pdf" download onclick="trackDownload('ML')" class="btn btn-secondary">Télécharger</a>
+                <button onclick="openFeedbackModal('Machine Learning')" class="btn btn-feedback">Avis</button>
             </div>
         </div>
 
