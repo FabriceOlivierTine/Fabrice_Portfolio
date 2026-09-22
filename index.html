@@ -19,9 +19,9 @@
             --accent-amber-bg: #fffbeb;
             --accent-amber-border: #fcd34d;
             --accent-green: #16a34a;
-            /* Ombres portées très fortes et nettes */
-            --heavy-shadow: 0 15px 35px rgba(15, 23, 42, 0.35), 0 5px 15px rgba(0, 0, 0, 0.2);
-            --modal-shadow: 0 25px 60px rgba(15, 23, 42, 0.5);
+            /* Ombres portées très contrastées et visibles */
+            --heavy-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.28), 0 8px 16px -4px rgba(0, 0, 0, 0.15);
+            --modal-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.45);
         }
 
         * {
@@ -33,36 +33,37 @@
             background-color: var(--bg-main);
             color: var(--text-primary);
             margin: 0;
-            padding: 30px 15px;
+            padding: 35px 15px;
             min-height: 100vh;
             position: relative;
         }
 
-        /* FOND TOTALEMENT NET ET BIEN VISIBLE SANS FLOU */
+        /* Image de fond légèrement floutée pour faire ressortir les cartes */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(248, 250, 252, 0.40), rgba(248, 250, 252, 0.45)), url('fond.jpg?v=2026_FINAL');
+            background-image: linear-gradient(rgba(248, 250, 252, 0.55), rgba(248, 250, 252, 0.65)), url('fond.jpg?v=2026_V3');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            backdrop-filter: blur(5px);
             z-index: -1;
         }
 
         .container {
-            max-width: 1150px;
+            max-width: 1180px;
             margin: 0 auto;
         }
 
-        /* CARTE PROFIL AVEC OMBRE PROFONDE */
+        /* CARTE PROFIL AVEC DE LA PROFONDEUR */
         .profile-card {
             background: rgba(255, 255, 255, 0.98);
             border: 2px solid var(--border-color);
             border-radius: 16px;
-            padding: 30px;
+            padding: 32px;
             box-shadow: var(--heavy-shadow);
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
         .profile-header-main {
@@ -73,18 +74,18 @@
         }
 
         .profile-avatar {
-            width: 130px;
-            height: 130px;
+            width: 135px;
+            height: 135px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-blue);
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 0 18px rgba(37, 99, 235, 0.35);
             flex-shrink: 0;
         }
 
         .profile-details h1 {
             margin: 0 0 6px 0;
-            font-size: 1.85em;
+            font-size: 1.9em;
             cursor: pointer;
             color: var(--text-primary);
             font-weight: 800;
@@ -123,7 +124,7 @@
             border: 1px solid var(--border-color);
             color: var(--text-secondary);
             font-weight: 600;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
         }
 
         .contact-item a {
@@ -161,7 +162,7 @@
         .btn-cv {
             background: var(--accent-blue);
             color: #ffffff;
-            padding: 11px 18px;
+            padding: 12px 20px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
@@ -182,13 +183,13 @@
             font-size: 1.35em;
             color: var(--text-primary);
             font-weight: 800;
-            margin: 35px 0 20px 0;
+            margin: 35px 0 22px 0;
             background: #ffffff;
             padding: 8px 16px;
             border-left: 5px solid var(--accent-blue);
             border-radius: 6px;
             display: inline-block;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
             border: 1px solid var(--border-color);
         }
 
@@ -196,16 +197,16 @@
         .grid-3-columns {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 22px;
+            margin-bottom: 35px;
         }
 
-        /* CARTES AVEC DE TRÈS BELLES OMBRES DÉTACHÉES DU FOND */
+        /* CARTES DE FICHIERS DÉTACHÉES DU FOND */
         .card {
             background: #ffffff;
             border: 2px solid var(--border-color);
             border-radius: 14px;
-            padding: 18px;
+            padding: 22px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -216,28 +217,28 @@
         .card:hover {
             border-color: var(--accent-blue);
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.4);
+            box-shadow: 0 22px 42px rgba(15, 23, 42, 0.35);
         }
 
         .card-title {
             margin: 0 0 8px 0;
-            font-size: 1.05em;
+            font-size: 1.08em;
             color: var(--text-primary);
             font-weight: 700;
         }
 
         .card-desc {
             color: var(--text-secondary);
-            font-size: 0.86em;
-            line-height: 1.45;
-            margin-bottom: 15px;
+            font-size: 0.88em;
+            line-height: 1.48;
+            margin-bottom: 16px;
             flex-grow: 1;
         }
 
         .badge-img {
-            max-width: 80px;
+            max-width: 75px;
             height: auto;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: block;
         }
 
@@ -250,8 +251,8 @@
 
         .btn {
             flex: 1;
-            padding: 7px 4px;
-            font-size: 0.76em;
+            padding: 8px 4px;
+            font-size: 0.78em;
             font-weight: 700;
             text-decoration: none;
             border-radius: 6px;
@@ -296,7 +297,7 @@
             background: #ffffff;
             border: 2px solid var(--accent-blue);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
             margin-bottom: 35px;
             box-shadow: var(--modal-shadow);
         }
@@ -333,7 +334,7 @@
             color: var(--text-secondary);
             text-align: left;
             transition: all 0.2s;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
         }
 
         .admin-nav-btn:hover, .admin-nav-btn.active {
@@ -401,11 +402,11 @@
             font-size: 0.9em;
         }
 
-        /* POP-UPS MODALES AVEC DE FORTE OMBRES */
+        /* POP-UPS MODALES */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.78);
+            background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(4px);
             display: none;
             justify-content: center;
@@ -461,7 +462,7 @@
             border-radius: 4px;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 950px) {
             .grid-3-columns {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -495,7 +496,7 @@
 
 <div class="container">
 
-    <!-- PANNEAU ADMIN SECRET (IDENTIFIANT: Fabrice / MOT DE PASSE: f@bolitine/123) -->
+    <!-- PANNEAU ADMIN SECRET (Fabrice / f@bolitine/123) -->
     <div id="adminPanel" class="admin-dashboard">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
             <h3 style="margin: 0; color: var(--accent-blue);">Tableau de Bord Administration</h3>
@@ -587,7 +588,7 @@
     <!-- PROFIL PRINCIPAL -->
     <header class="profile-card">
         <div class="profile-header-main">
-            <img src="photo.jpg?v=2026_FINAL" id="displayPhoto" alt="Fabrice Olivier Lamine TINE" class="profile-avatar">
+            <img src="photo.jpg?v=2026_V3" id="displayPhoto" alt="Fabrice Olivier Lamine TINE" class="profile-avatar">
             
             <div class="profile-details">
                 <h1 id="authorName" onclick="handleNameClicks()">Fabrice Olivier Lamine TINE</h1>
@@ -624,14 +625,14 @@
     </header>
 
 
-    <!-- SECTION 1 : CERTIFICATIONS (ALIGNÉES PAR 3 EN GRILLE) -->
+    <!-- SECTION 1 : CERTIFICATIONS -->
     <h2 class="section-header">Certifications & Accréditations</h2>
     <div class="grid-3-columns" id="certifContainer">
 
         <div class="card">
             <div>
-                <h3 class="card-title">Scrum Fundamentals</h3>
-                <p class="card-desc">Certification sur les méthodologies agiles et le cadre Scrum.</p>
+                <h3 class="card-title">Scrum Fundamentals Certified</h3>
+                <p class="card-desc">Certification sur les méthodologies agiles, le cadre Scrum et la gestion de projets informatiques.</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/Scrum_Fundamentals_Certified_Fabrice_Olivier_Lamine_Tine.pdf" target="_blank" onclick="trackClick('Scrum')" class="btn btn-primary">Visualiser</a>
@@ -641,9 +642,9 @@
 
         <div class="card">
             <div>
-                <img src="badge.png" alt="AWS Badge" class="badge-img" onerror="this.style.display='none'">
+                <img src="Badge_AWS.png" alt="AWS Badge" class="badge-img" onerror="this.style.display='none'">
                 <h3 class="card-title">AWS Cloud Architecting</h3>
-                <p class="card-desc">Accréditation sur les architectures Cloud AWS scalables.</p>
+                <p class="card-desc">Accréditation validant la conception d'architectures Cloud, la sécurité et la haute disponibilité AWS.</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/AWS_Academy_Graduate___Cloud_Architecting___Training_Badge_Badge20260331-30-j7ksjw.pdf" target="_blank" onclick="trackClick('AWS')" class="btn btn-primary">Visualiser</a>
@@ -654,7 +655,7 @@
         <div class="card">
             <div>
                 <h3 class="card-title">CCNA - SRWE</h3>
-                <p class="card-desc">Commutation, routage dynamique et réseaux sans fil.</p>
+                <p class="card-desc">Certification Cisco : Commutation, routage dynamique, VLANs, sécurité des ports et sans-fil.</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate.pdf" target="_blank" onclick="trackClick('CCNA2')" class="btn btn-primary">Visualiser</a>
@@ -665,7 +666,7 @@
         <div class="card">
             <div>
                 <h3 class="card-title">CCNA - Introduction to Networks</h3>
-                <p class="card-desc">Fondamentaux des réseaux, modèle OSI et IPv4/IPv6.</p>
+                <p class="card-desc">Certification Cisco : Modèle OSI, adressage IPv4/IPv6 et configuration initiale d'équipements.</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/CCNA-_Introduction_to_Networks_certificate.pdf" target="_blank" onclick="trackClick('CCNA1')" class="btn btn-primary">Visualiser</a>
@@ -676,14 +677,14 @@
     </div>
 
 
-    <!-- SECTION 2 : ENSEMBLE COMPLET DES TRAVAUX PRATIQUES (ALIGNÉS PAR 3 EN GRILLE) -->
+    <!-- SECTION 2 : TOUS LES TRAVAUX PRATIQUES (SANS OMISSION) -->
     <h2 class="section-header">Travaux Pratiques & Projets</h2>
     <div class="grid-3-columns" id="tpContainer">
 
         <div class="card">
             <div>
                 <h3 class="card-title">DevOps - SmartTask</h3>
-                <p class="card-desc">Pipelines CI/CD et automatisation d'infrastructures.</p>
+                <p class="card-desc">Mise en place de pipelines CI/CD et automatisation d'infrastructures informatiques.</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/Rapport_Ingenierie_SmartTask_DevOps_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" onclick="trackClick('DevOps')" class="btn btn-primary">Visualiser</a>
@@ -695,7 +696,7 @@
         <div class="card">
             <div>
                 <h3 class="card-title">Infrastructure Sécurisée</h3>
-                <p class="card-desc">Mise en œuvre de règles de filtrage et pare-feu.</p>
+                <p class="card-desc">Mise en œuvre de règles de filtrage, pare-feu et contrôle d'accès d'entreprise.</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/rapport_tp_DÉPLOIEMENT D'UNE INFRASTRUCTURE SÉCURISÉE AVEC .pdf" target="_blank" onclick="trackClick('InfraSecu')" class="btn btn-primary">Visualiser</a>
@@ -707,7 +708,7 @@
         <div class="card">
             <div>
                 <h3 class="card-title">Routage BGP (Module 7)</h3>
-                <p class="card-desc">Filtrage BGP et annonces de préfixes inter-AS.</p>
+                <p class="card-desc">Configuration des politiques de filtrage BGP et annonces de préfixes d'interconnexion.</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/Rapport_TP_Module7_BGP_Filtrage Fabrice olivier Lamine TINE M1 RESI(1).pdf" target="_blank" onclick="trackClick('BGP7')" class="btn btn-primary">Visualiser</a>
@@ -719,7 +720,7 @@
         <div class="card">
             <div>
                 <h3 class="card-title">iBGP & eBGP (Module 6)</h3>
-                <p class="card-desc">Routage BGP interne et externe complexe.</p>
+                <p class="card-desc">Routage BGP interne et externe pour l'interconnexion de plusieurs AS (Autonomous Systems).</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" target="_blank" onclick="trackClick('BGP6')" class="btn btn-primary">Visualiser</a>
@@ -731,7 +732,7 @@
         <div class="card">
             <div>
                 <h3 class="card-title">Cluster Haute Disponibilité</h3>
-                <p class="card-desc">Haute disponibilité et tolérance aux pannes.</p>
+                <p class="card-desc">Déploiement de cluster de serveurs, répartition de charge et tolérance aux pannes.</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" target="_blank" onclick="trackClick('Cluster')" class="btn btn-primary">Visualiser</a>
@@ -743,7 +744,7 @@
         <div class="card">
             <div>
                 <h3 class="card-title">Administration Systèmes</h3>
-                <p class="card-desc">Gestion des services d'annuaire AD DS, GPO, DNS, DHCP Linux/Windows.</p>
+                <p class="card-desc">Gestion des services d'annuaire AD DS, GPO, DNS, DHCP et administration Linux/Windows.</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/Rapport_D'administration_systhème_Fabrice_Olivier_Lamine_TINE .pdf" target="_blank" onclick="trackClick('SysAdmin')" class="btn btn-primary">Visualiser</a>
@@ -755,7 +756,7 @@
         <div class="card">
             <div>
                 <h3 class="card-title">Téléphonie sur IP (VoIP)</h3>
-                <p class="card-desc">Configuration d'IPBX, gestion des protocoles SIP et VoIP.</p>
+                <p class="card-desc">Configuration d'IPBX, gestion des protocoles SIP et plan de numérotation VoIP.</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/Rapport_Téléphonie_sur_ IP Fabrice Olivier Lamine TINE M1 RESI.pdf" target="_blank" onclick="trackClick('VoIP')" class="btn btn-primary">Visualiser</a>
@@ -767,7 +768,7 @@
         <div class="card">
             <div>
                 <h3 class="card-title">Stockage Réseau (SAN/NAS)</h3>
-                <p class="card-desc">Analyse des baies de stockage, RAID et gestion SAN/NAS.</p>
+                <p class="card-desc">Analyse des baies de stockage, configuration RAID et gestion des volumes SAN/NAS.</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/Rappot_Examen_Stockage_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" onclick="trackClick('Stockage')" class="btn btn-primary">Visualiser</a>
@@ -779,7 +780,7 @@
         <div class="card">
             <div>
                 <h3 class="card-title">Machine Learning - Régression</h3>
-                <p class="card-desc">Modeles statistiques prédictifs avec Python et Scikit-learn.</p>
+                <p class="card-desc">Entraînement de modèles statistiques prédictifs avec Python et Scikit-learn.</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/Rapport_Regression_Lineaire_Detaille.pdf" target="_blank" onclick="trackClick('ML')" class="btn btn-primary">Visualiser</a>
