@@ -19,9 +19,9 @@
             --accent-amber-bg: #fffbeb;
             --accent-amber-border: #fcd34d;
             --accent-green: #16a34a;
-            /* Ombres très visibles et profondes */
-            --card-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.22), 0 8px 12px -6px rgba(15, 23, 42, 0.15);
-            --modal-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.45);
+            /* Ombres sombres et marquées pour faire ressortir sur fond net */
+            --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.35), 0 5px 15px rgba(0, 0, 0, 0.2);
+            --modal-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
         }
 
         * {
@@ -30,7 +30,6 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-main);
             color: var(--text-primary);
             margin: 0;
             padding: 30px 15px;
@@ -38,16 +37,15 @@
             position: relative;
         }
 
-        /* Fond très très clair et lumineux */
+        /* FOND NORMALE ET NET SANS VOILE MASQUANT */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(248, 250, 252, 0.88), rgba(248, 250, 252, 0.92)), url('fond.jpg?v=2026_2');
+            background-image: linear-gradient(rgba(15, 23, 42, 0.15), rgba(15, 23, 42, 0.2)), url('fond.jpg?v=2026_3');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            filter: brightness(1.25);
             z-index: -1;
         }
 
@@ -56,14 +54,15 @@
             margin: 0 auto;
         }
 
-        /* EN-TÊTE / PROFIL AVEC DE LA PROFONDEUR */
+        /* EN-TÊTE / PROFIL AVEC OMBLAGE PRONONCÉ */
         .profile-card {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.96);
             border: 2px solid var(--border-color);
             border-radius: 16px;
             padding: 30px;
             box-shadow: var(--card-shadow);
             margin-bottom: 35px;
+            backdrop-filter: blur(2px);
         }
 
         .profile-header-main {
@@ -79,7 +78,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-blue);
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.35);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
             flex-shrink: 0;
         }
 
@@ -118,13 +117,13 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            background: #f1f5f9;
+            background: #ffffff;
             padding: 8px 14px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
             color: var(--text-secondary);
             font-weight: 600;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .contact-item a {
@@ -170,7 +169,7 @@
             display: block;
             text-align: center;
             transition: background 0.2s, transform 0.1s;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
         }
 
         .btn-cv:hover {
@@ -178,21 +177,22 @@
             transform: translateY(-2px);
         }
 
-        /* SECTIONS ET GRILLE PAR 3 FICHIERS */
+        /* TITRES DE SECTIONS */
         .section-header {
             font-size: 1.35em;
             color: var(--text-primary);
             font-weight: 800;
             margin: 35px 0 20px 0;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.96);
             padding: 8px 16px;
             border-left: 5px solid var(--accent-blue);
             border-radius: 6px;
             display: inline-block;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
             border: 1px solid var(--border-color);
         }
 
+        /* GRILLE 3 COLONNES HORIZONTALES */
         .grid-3-columns {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -200,9 +200,9 @@
             margin-bottom: 30px;
         }
 
-        /* CARTES DE FICHIERS */
+        /* CARTES AVEC BADGE ET SHADOWS */
         .card {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.96);
             border: 2px solid var(--border-color);
             border-radius: 14px;
             padding: 18px;
@@ -211,12 +211,21 @@
             justify-content: space-between;
             box-shadow: var(--card-shadow);
             transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            backdrop-filter: blur(2px);
+            position: relative;
         }
 
         .card:hover {
             border-color: var(--accent-blue);
             transform: translateY(-5px);
-            box-shadow: 0 18px 36px rgba(15, 23, 42, 0.28);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+        }
+
+        .badge-img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            margin-bottom: 10px;
         }
 
         .card-title {
@@ -234,7 +243,7 @@
             flex-grow: 1;
         }
 
-        /* BOUTONS ALIGNÉS À L'HORIZONTALE + TAILLE RÉDUITE */
+        /* BOUTONS HORIZONTAUX ET RECTANGULAIRES COMPACTS */
         .btn-group-horizontal {
             display: flex;
             gap: 6px;
@@ -243,7 +252,7 @@
 
         .btn {
             flex: 1;
-            padding: 6px 4px;
+            padding: 7px 4px;
             font-size: 0.75em;
             font-weight: 700;
             text-decoration: none;
@@ -283,10 +292,10 @@
             background-color: #fef3c7;
         }
 
-        /* BARRE VERTICALE ET ESPACE ADMIN */
+        /* ESPACE ADMIN & SIDEBAR */
         .admin-dashboard {
             display: none;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.98);
             border: 2px solid var(--accent-blue);
             border-radius: 16px;
             padding: 20px;
@@ -394,12 +403,12 @@
             font-size: 0.9em;
         }
 
-        /* POP-UPS AVEC SHADOW MARQUÉE */
+        /* POP-UPS MODALES */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(3px);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(4px);
             display: none;
             justify-content: center;
             align-items: center;
@@ -580,7 +589,7 @@
     <!-- PROFIL PRINCIPAL -->
     <header class="profile-card">
         <div class="profile-header-main">
-            <img src="photo.jpg?v=2026_2" id="displayPhoto" alt="Fabrice Olivier Lamine TINE" class="profile-avatar">
+            <img src="photo.jpg?v=2026_3" id="displayPhoto" alt="Fabrice Olivier Lamine TINE" class="profile-avatar">
             
             <div class="profile-details">
                 <h1 id="authorName" onclick="handleNameClicks()">Fabrice Olivier Lamine TINE</h1>
@@ -617,29 +626,31 @@
     </header>
 
 
-    <!-- SECTION 1 : CERTIFICATIONS (ALIGNÉES PAR 3 HORIZONTALEMENT) -->
+    <!-- SECTION 1 : CERTIFICATIONS (AVEC BADGE AWS REINTEGRE ET DESSIN PAR 3) -->
     <h2 class="section-header">Certifications & Accréditations</h2>
     <div class="grid-3-columns" id="certifContainer">
 
         <div class="card">
             <div>
-                <h3 class="card-title">Scrum Fundamentals</h3>
+                <h3 class="card-title">Scrum Fundamentals Certified</h3>
                 <p class="card-desc">Certification sur les méthodologies agiles et le cadre Scrum.</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/Scrum_Fundamentals_Certified_Fabrice_Olivier_Lamine_Tine.pdf" target="_blank" onclick="trackClick('Scrum')" class="btn btn-primary">Visualiser</a>
-                <button onclick="openFeedbackModal('Scrum Fundamentals Certified')" class="btn btn-feedback">Donner un avis</button>
+                <button onclick="openFeedbackModal('Scrum Fundamentals Certified')" class="btn btn-feedback">Avis</button>
             </div>
         </div>
 
         <div class="card">
             <div>
+                <!-- BADGE AWS INCLU -->
+                <img src="badge.png" alt="AWS Badge" class="badge-img" onerror="this.style.display='none'">
                 <h3 class="card-title">AWS Cloud Architecting</h3>
                 <p class="card-desc">Accréditation sur les architectures Cloud AWS scalables.</p>
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/AWS_Academy_Graduate___Cloud_Architecting___Training_Badge_Badge20260331-30-j7ksjw.pdf" target="_blank" onclick="trackClick('AWS')" class="btn btn-primary">Visualiser</a>
-                <button onclick="openFeedbackModal('AWS Cloud Architecting')" class="btn btn-feedback">Donner un avis</button>
+                <button onclick="openFeedbackModal('AWS Cloud Architecting')" class="btn btn-feedback">Avis</button>
             </div>
         </div>
 
@@ -650,7 +661,7 @@
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate.pdf" target="_blank" onclick="trackClick('CCNA2')" class="btn btn-primary">Visualiser</a>
-                <button onclick="openFeedbackModal('CCNA - SRWE')" class="btn btn-feedback">Donner un avis</button>
+                <button onclick="openFeedbackModal('CCNA - SRWE')" class="btn btn-feedback">Avis</button>
             </div>
         </div>
 
@@ -661,14 +672,14 @@
             </div>
             <div class="btn-group-horizontal">
                 <a href="docs/CCNA-_Introduction_to_Networks_certificate.pdf" target="_blank" onclick="trackClick('CCNA1')" class="btn btn-primary">Visualiser</a>
-                <button onclick="openFeedbackModal('CCNA - Introduction to Networks')" class="btn btn-feedback">Donner un avis</button>
+                <button onclick="openFeedbackModal('CCNA - Introduction to Networks')" class="btn btn-feedback">Avis</button>
             </div>
         </div>
 
     </div>
 
 
-    <!-- SECTION 2 : TRAVAUX PRATIQUES (ALIGNÉS PAR 3 HORIZONTALEMENT + BOUTONS HORIZONTAUX) -->
+    <!-- SECTION 2 : TOUS LES TRAVAUX PRATIQUES (TOUS RESTAURÉS) -->
     <h2 class="section-header">Travaux Pratiques & Projets</h2>
     <div class="grid-3-columns" id="tpContainer">
 
@@ -714,8 +725,8 @@
                 <p class="card-desc">Routage BGP interne et externe complexe.</p>
             </div>
             <div class="btn-group-horizontal">
-                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" target="_blank" onclick="trackClick('BGP6')" class="btn btn-primary">Visualiser</a>
-                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" download onclick="trackDownload('BGP6')" class="btn btn-secondary">Télécharger</a>
+                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" target="_blank" onclick="trackClick('BGP6')" class="btn btn-primary">Visualiser</a>
+                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" download onclick="trackDownload('BGP6')" class="btn btn-secondary">Télécharger</a>
                 <button onclick="openFeedbackModal('iBGP & eBGP')" class="btn btn-feedback">Avis</button>
             </div>
         </div>
@@ -938,7 +949,7 @@
                 </div>
                 <div class="btn-group-horizontal">
                     <a href="docs/${certFile}" target="_blank" onclick="trackClick('${certTitle}')" class="btn btn-primary">Visualiser</a>
-                    <button onclick="openFeedbackModal('${certTitle}')" class="btn btn-feedback">Donner un avis</button>
+                    <button onclick="openFeedbackModal('${certTitle}')" class="btn btn-feedback">Avis</button>
                 </div>
             </div>`;
             document.getElementById('certifContainer').insertAdjacentHTML('beforeend', htmlCert);
