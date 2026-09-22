@@ -6,36 +6,69 @@
     <title>Portfolio - Fabrice Olivier Lamine TINE</title>
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: rgba(22, 27, 34, 0.85);
+            --bg-dark: #0d1117;
+            --card-bg: rgba(22, 27, 34, 0.88);
             --border-color: #30363d;
             --text-primary: #f0f6fc;
             --text-secondary: #8b949e;
             --accent-cyan: #58a6ff;
-            --accent-green: #3fb950;
-            --accent-glow: rgba(56, 139, 253, 0.15);
+            --accent-green: #2ea44f;
+            --accent-purple: #a371f7;
+            --accent-glow: rgba(88, 166, 255, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
+            background-color: var(--bg-dark);
             color: var(--text-primary);
             margin: 0;
-            padding: 40px 20px;
+            padding: 30px 15px;
             min-height: 100vh;
+            position: relative;
+        }
 
-            /* Fond illustrant un réseau informatique / nœuds interconnectés */
-            background-image: 
-                radial-gradient(circle at 25px 25px, rgba(88, 166, 255, 0.15) 2px, transparent 0),
-                linear-gradient(to right, rgba(48, 54, 61, 0.3) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(48, 54, 61, 0.3) 1px, transparent 1px);
-            background-size: 50px 50px, 40px 40px, 40px 40px;
+        /* Image de fond avec filtre assombrissant */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(13, 17, 23, 0.85), rgba(13, 17, 23, 0.92)), url('fond.jpg');
+            background-size: cover;
+            background-position: center;
             background-attachment: fixed;
+            z-index: -1;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 0 auto;
+        }
+
+        /* BARRE ACTION VISITEUR */
+        .top-bar-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+        }
+
+        .btn-top {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.88em;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .btn-top:hover {
+            background: rgba(255, 255, 255, 0.15);
         }
 
         /* EN-TÊTE / PROFIL */
@@ -43,18 +76,22 @@
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 35px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow);
+            backdrop-filter: blur(12px);
+            margin-bottom: 35px;
+        }
+
+        .profile-header-main {
             display: flex;
             align-items: center;
-            gap: 30px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
-            backdrop-filter: blur(10px);
-            margin-bottom: 40px;
+            gap: 25px;
+            margin-bottom: 25px;
         }
 
         .profile-avatar {
-            width: 140px;
-            height: 140px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-cyan);
@@ -63,24 +100,23 @@
         }
 
         .profile-details h1 {
-            margin: 0 0 8px 0;
-            font-size: 2em;
-            letter-spacing: -0.5px;
+            margin: 0 0 6px 0;
+            font-size: 1.9em;
+            cursor: default;
         }
 
         .profile-status {
             color: var(--accent-cyan);
-            font-size: 1.15em;
+            font-size: 1.1em;
             font-weight: 600;
-            margin: 0 0 18px 0;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
         .status-dot {
-            width: 10px;
-            height: 10px;
+            width: 10px; height: 10px;
             background-color: var(--accent-green);
             border-radius: 50%;
             box-shadow: 0 0 8px var(--accent-green);
@@ -89,16 +125,16 @@
         .contact-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            font-size: 0.95em;
+            gap: 12px;
+            font-size: 0.9em;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: rgba(255, 255, 255, 0.05);
-            padding: 8px 14px;
+            padding: 6px 12px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
         }
@@ -106,18 +142,57 @@
         .contact-item a {
             color: var(--text-primary);
             text-decoration: none;
-            font-weight: 500;
         }
 
-        .contact-item a:hover {
-            color: var(--accent-cyan);
+        /* DISPOSITION BIO & CV À DROITE */
+        .bio-section {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        .bio-text {
+            flex: 1;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .cv-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            min-width: 180px;
+        }
+
+        .btn-cv {
+            background: linear-gradient(135deg, var(--accent-cyan), #1f6beb);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            box-shadow: 0 4px 12px rgba(31, 107, 235, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn-cv:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(31, 107, 235, 0.5);
         }
 
         /* SECTIONS & CARTES */
         .section-header {
-            font-size: 1.4em;
+            font-size: 1.35em;
             color: var(--text-primary);
-            margin: 40px 0 20px 0;
+            margin: 35px 0 20px 0;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -127,7 +202,7 @@
 
         .grid-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
 
@@ -135,7 +210,7 @@
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 24px;
+            padding: 22px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -151,20 +226,18 @@
 
         .card-title {
             margin: 0 0 10px 0;
-            font-size: 1.15em;
+            font-size: 1.1em;
             color: var(--text-primary);
-            line-height: 1.4;
         }
 
         .card-desc {
             color: var(--text-secondary);
-            font-size: 0.9em;
+            font-size: 0.88em;
             line-height: 1.5;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             flex-grow: 1;
         }
 
-        /* BOUTONS D'ACTION */
         .btn-group {
             display: flex;
             gap: 10px;
@@ -181,13 +254,14 @@
             font-weight: 600;
             text-decoration: none;
             border-radius: 8px;
+            cursor: pointer;
+            border: none;
             transition: all 0.2s ease;
         }
 
         .btn-primary {
             background-color: #238636;
             color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .btn-primary:hover {
@@ -195,23 +269,141 @@
         }
 
         .btn-secondary {
-            background-color: rgba(110, 118, 129, 0.1);
+            background-color: rgba(110, 118, 129, 0.15);
             color: var(--text-primary);
             border: 1px solid var(--border-color);
         }
 
         .btn-secondary:hover {
-            background-color: rgba(110, 118, 129, 0.2);
-            border-color: #8b949e;
+            background-color: rgba(110, 118, 129, 0.3);
         }
 
-        @media (max-width: 650px) {
-            .profile-card {
+        /* MODALES ET POP-UP */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.78);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-box {
+            background: #161b22;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            width: 90%;
+            max-width: 500px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.4em;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.85em;
+            color: var(--text-secondary);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background: #0d1117;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+        }
+
+        /* MESSAGES DE STYLES FORMSPREE */
+        [data-fs-success] {
+            display: none;
+            background: rgba(46, 164, 79, 0.2);
+            border: 1px solid var(--accent-green);
+            color: #3fb950;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        [data-fs-error] {
+            color: #f85149;
+            font-size: 0.8em;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* TABLEAU DE BORD ADMIN (SECRET ET TOTALEMENT MASQUÉ) */
+        .admin-dashboard {
+            display: none;
+            background: var(--card-bg);
+            border: 1px solid var(--accent-purple);
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 25px rgba(163, 113, 247, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: #0d1117;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: var(--accent-purple);
+        }
+
+        @media (max-width: 768px) {
+            .profile-header-main {
                 flex-direction: column;
                 text-align: center;
             }
-            .contact-grid {
-                justify-content: center;
+            .bio-section {
+                flex-direction: column;
+            }
+            .cv-box {
+                width: 100%;
             }
         }
     </style>
@@ -220,214 +412,396 @@
 
 <div class="container">
 
-    <!-- ================================================================= -->
-    <!-- EN-TÊTE DU PROFIL : PHOTO ET COORDONNÉES                         -->
-    <!-- ================================================================= -->
-    <header class="profile-card">
+    <!-- SEUL BOUTON VISIBLE PAR LES VISITEURS -->
+    <div class="top-bar-actions">
+        <button class="btn-top" onclick="openFeedbackModal()">💬 Donner mon avis</button>
+    </div>
+
+    <!-- PANNEAU ADMIN SECRET (INACCESSIBLE ET INVISIBLE PAR DÉFAUT) -->
+    <div id="adminPanel" class="admin-dashboard">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h3 style="margin: 0; color: var(--accent-purple);">⚙️ Espace Administration Secret</h3>
+            <button class="btn-top" onclick="logoutAdmin()">🔒 Fermer la session</button>
+        </div>
         
-        <!-- 💡 REMPLIR ICI : Assure-toi que l'image 'photo.jpg' est dans le même dossier -->
-        <img src="photo.jpg" alt="Photo de profil" class="profile-avatar">
-        
-        <div class="profile-details">
-            <h1>Fabrice Olivier Lamine TINE</h1>
-            
-            <div class="profile-status">
-                <span class="status-dot"></span>
-                Administrateur Réseaux et Systèmes en devenir
+        <!-- SUIVI STATISTIQUES D'ACCÈS -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="statViews">0</div>
+                <div style="font-size: 0.8em; color: var(--text-secondary);">Visites Totales</div>
             </div>
+            <div class="stat-card">
+                <div class="stat-number" id="statClicks">0</div>
+                <div style="font-size: 0.8em; color: var(--text-secondary);">Visualisations PDF</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="statDownloads">0</div>
+                <div style="font-size: 0.8em; color: var(--text-secondary);">Téléchargements</div>
+            </div>
+        </div>
+
+        <!-- OUTILS DE MODIFICATION DYNAMIQUE -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="form-group">
+                <label>Modifier la Description du Profil :</label>
+                <textarea id="adminBioInput" rows="3"></textarea>
+                <button class="btn btn-primary" style="margin-top: 8px; width: 100%;" onclick="updateBio()">Mettre à jour la description</button>
+            </div>
+            <div class="form-group">
+                <label>Ajouter un nouveau document PDF :</label>
+                <input type="text" id="newDocTitle" placeholder="Titre du document" style="margin-bottom: 6px;">
+                <input type="text" id="newDocFile" placeholder="nom_du_fichier.pdf">
+                <button class="btn btn-secondary" style="margin-top: 8px; width: 100%;" onclick="addNewDoc()">Ajouter au Portfolio</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- EN-TÊTE / PROFIL PRINCIPAL -->
+    <header class="profile-card">
+        <div class="profile-header-main">
+            <img src="photo.jpg" alt="Fabrice Olivier Lamine TINE" class="profile-avatar">
             
-            <div class="contact-grid">
-                <!-- 💡 REMPLIR ICI : Ton numéro de téléphone -->
-                <div class="contact-item">
-                    <span>📞</span>
-                    <a href="tel:+221771049053">+221 77 104 90 53</a>
+            <div class="profile-details">
+                <!-- Astuce Mobile : 3 clics rapides sur le nom ouvrent l'Admin -->
+                <h1 id="authorName" onclick="handleNameClicks()">Fabrice Olivier Lamine TINE</h1>
+                
+                <div class="profile-status">
+                    <span class="status-dot"></span>
+                    Administrateur Réseaux et Systèmes en devenir
                 </div>
                 
-                <!-- 💡 REMPLIR ICI : Ton adresse e-mail -->
-                <div class="contact-item">
-                    <span>✉️</span>
-                    <a href="mailto:fabriceoliviertine@outlook.com">fabriceoliviertine@outlook.com</a>
-                </div>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <a href="tel:+221770000000">+221 77 000 00 00</a>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span>✉️</span>
+                        <a href="mailto:votre.email@example.com">votre.email@example.com</a>
+                    </div>
 
-                <div class="contact-item">
-                    <span>📍</span>
-                    <span>Sénégal</span>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Ouakam, Dakar</span>
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- DESCRIPTION ET BOUTON CV DÉDIÉ -->
+        <div class="bio-section">
+            <p class="bio-text" id="displayBio">
+                Étudiant en Master Réseaux et Systèmes Informatiques au Groupe ISI de Dakar, titulaire d'une Licence en Informatique Appliquée à la Gestion des Entreprises. Passionné par l'administration des systèmes et réseaux, je possède des compétences en configuration d'équipements Cisco, virtualisation avec Proxmox et technologies cloud AWS. Rigoureux, organisé et motivé, je souhaite intégrer une entreprise afin de contribuer à la gestion et à la sécurisation des infrastructures informatiques tout en développant mes compétences professionnelles.
+            </p>
+            <div class="cv-box">
+                <!-- NOM DE CV EXACT : CV Fabrice Olivier Lamine TINE.pdf -->
+                <a href="docs/CV Fabrice Olivier Lamine TINE.pdf" target="_blank" onclick="trackClick('CV')" class="btn-cv">📄 Consulter mon CV</a>
             </div>
         </div>
     </header>
 
 
-    <!-- ================================================================= -->
-    <!-- SECTION 1 : CERTIFICATIONS ET CERTIFICATS                        -->
-    <!-- ================================================================= -->
-    <h2 class="section-header">📜 Certifications & Accreditation Cloud / Réseau</h2>
-    
+    <!-- SECTION 1 : CERTIFICATIONS (VISUALISATION UNIQUEMENT) -->
+    <h2 class="section-header">📜 Certifications & Accréditations</h2>
     <div class="grid-layout">
 
         <div class="card">
             <div>
-                <h3 class="card-title">AWS Academy Graduate - Cloud Architecting</h3>
-                <p class="card-desc">Accréditation validant les architectures Cloud, le dimensionnement, la sécurité et la haute disponibilité sur AWS.</p>
+                <h3 class="card-title">Scrum Fundamentals Certified (SFC)</h3>
+                <p class="card-desc">Certification sur les méthodologies agiles, le cadre Scrum et la gestion de projets informatiques.</p>
             </div>
             <div class="btn-group">
-                <a href="docs/AWS_Academy_Graduate___Cloud_Architecting___Training_Badge_Badge20260331-30-j7ksjw.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
-                <a href="Badge_AWS.png" target="_blank" class="btn btn-secondary">🖼️ Badge PNG</a>
+                <a href="docs/Scrum_Fundamentals_Certified_Fabrice_Olivier_Lamine_Tine.pdf" target="_blank" onclick="trackClick('Scrum')" class="btn btn-primary">👁️ Visualiser</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <h3 class="card-title">AWS Academy Graduate - Cloud Architecting</h3>
+                <p class="card-desc">Accréditation validant la conception d'architectures Cloud, la sécurité et la haute disponibilité AWS.</p>
+            </div>
+            <div class="btn-group">
+                <a href="docs/AWS_Academy_Graduate___Cloud_Architecting___Training_Badge_Badge20260331-30-j7ksjw.pdf" target="_blank" onclick="trackClick('AWS')" class="btn btn-primary">👁️ Visualiser</a>
             </div>
         </div>
 
         <div class="card">
             <div>
                 <h3 class="card-title">CCNA - Switching, Routing, and Wireless Essentials</h3>
-                <p class="card-desc">Certification Cisco : Commutation, routage dynamique, VLANs, sécurité des ports et réseaux sans fil.</p>
+                <p class="card-desc">Certification Cisco : Commutation, routage dynamique, VLANs, sécurité des ports et sans-fil.</p>
             </div>
             <div class="btn-group">
-                <a href="docs/CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
-                <a href="docs/CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+                <a href="docs/CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate.pdf" target="_blank" onclick="trackClick('CCNA2')" class="btn btn-primary">👁️ Visualiser</a>
             </div>
         </div>
 
         <div class="card">
             <div>
                 <h3 class="card-title">CCNA - Introduction to Networks</h3>
-                <p class="card-desc">Certification Cisco : Principes fondamentaux du réseau, modèle OSI, adressage IPv4/IPv6 et routage initial.</p>
+                <p class="card-desc">Certification Cisco : Modèle OSI, adressage IPv4/IPv6 et configuration initiale d'équipements.</p>
             </div>
             <div class="btn-group">
-                <a href="docs/CCNA-_Introduction_to_Networks_certificate.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
-                <a href="docs/CCNA-_Introduction_to_Networks_certificate.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+                <a href="docs/CCNA-_Introduction_to_Networks_certificate.pdf" target="_blank" onclick="trackClick('CCNA1')" class="btn btn-primary">👁️ Visualiser</a>
             </div>
         </div>
 
     </div>
 
 
-    <!-- ================================================================= -->
-    <!-- SECTION 2 : RAPPORTS ET PROJETS TECHNIQUES                       -->
-    <!-- ================================================================= -->
-    <h2 class="section-header">🖥️ Projets Réseaux, Systèmes & DevOps</h2>
-    
-    <div class="grid-layout">
+    <!-- SECTION 2 : TRAVAUX PRATIQUES & PROJETS (VISUALISER + TÉLÉCHARGER) -->
+    <h2 class="section-header">🖥️ Travaux Pratiques & Projets Réseaux / Systèmes</h2>
+    <div class="grid-layout" id="projectsContainer">
 
         <div class="card">
             <div>
                 <h3 class="card-title">Ingénierie DevOps & Automation - SmartTask</h3>
-                <p class="card-desc">Mise en place de chaînes d'intégration et déploiement continu (CI/CD) et automatisation d'infrastructures.</p>
+                <p class="card-desc">Mise en place de pipelines CI/CD et automatisation d'infrastructures informatiques.</p>
             </div>
             <div class="btn-group">
-                <a href="docs/Rapport_Ingenierie_SmartTask_DevOps_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
-                <a href="docs/Rapport_Ingenierie_SmartTask_DevOps_Fabrice_Olivier_Lamine_TINE.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+                <a href="docs/Rapport_Ingenierie_SmartTask_DevOps_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" onclick="trackClick('DevOps')" class="btn btn-primary">👁️ Visualiser</a>
+                <a href="docs/Rapport_Ingenierie_SmartTask_DevOps_Fabrice_Olivier_Lamine_TINE.pdf" download onclick="trackDownload('DevOps')" class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
         <div class="card">
             <div>
                 <h3 class="card-title">Déploiement d'une Infrastructure Sécurisée</h3>
-                <p class="card-desc">Mise en œuvre de politiques de sécurité réseau, pare-feu et contrôle d'accès d'entreprise.</p>
+                <p class="card-desc">Mise en œuvre de règles de filtrage, pare-feu et contrôle d'accès d'entreprise.</p>
             </div>
             <div class="btn-group">
-                <a href="docs/rapport_tp_DÉPLOIEMENT D'UNE INFRASTRUCTURE SÉCURISÉE AVEC .pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
-                <a href="docs/rapport_tp_DÉPLOIEMENT D'UNE INFRASTRUCTURE SÉCURISÉE AVEC .pdf" download class="btn btn-secondary">📥 Télécharger</a>
+                <a href="docs/rapport_tp_DÉPLOIEMENT D'UNE INFRASTRUCTURE SÉCURISÉE AVEC .pdf" target="_blank" onclick="trackClick('InfraSecu')" class="btn btn-primary">👁️ Visualiser</a>
+                <a href="docs/rapport_tp_DÉPLOIEMENT D'UNE INFRASTRUCTURE SÉCURISÉE AVEC .pdf" download onclick="trackDownload('InfraSecu')" class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
         <div class="card">
             <div>
                 <h3 class="card-title">Routage BGP & Filtrage de Routes (Module 7)</h3>
-                <p class="card-desc">Configuration des politiques de filtrage BGP et gestion des préfixes entre systèmes autonomes.</p>
+                <p class="card-desc">Configuration des politiques de filtrage BGP et annonces de préfixes d'interconnexion.</p>
             </div>
             <div class="btn-group">
-                <a href="docs/Rapport_TP_Module7_BGP_Filtrage Fabrice olivier Lamine TINE M1 RESI(1).pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
-                <a href="docs/Rapport_TP_Module7_BGP_Filtrage Fabrice olivier Lamine TINE M1 RESI(1).pdf" download class="btn btn-secondary">📥 Télécharger</a>
+                <a href="docs/Rapport_TP_Module7_BGP_Filtrage Fabrice olivier Lamine TINE M1 RESI(1).pdf" target="_blank" onclick="trackClick('BGP7')" class="btn btn-primary">👁️ Visualiser</a>
+                <a href="docs/Rapport_TP_Module7_BGP_Filtrage Fabrice olivier Lamine TINE M1 RESI(1).pdf" download onclick="trackDownload('BGP7')" class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
         <div class="card">
             <div>
                 <h3 class="card-title">Interconnexion iBGP & eBGP (Module 6)</h3>
-                <p class="card-desc">Déploiement de topologies réseaux complexes basées sur les protocoles de routage iBGP et eBGP.</p>
+                <p class="card-desc">Routage BGP interne et externe pour l'interconnexion de plusieurs AS (Autonomous Systems).</p>
             </div>
             <div class="btn-group">
-                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
-                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" target="_blank" onclick="trackClick('BGP6')" class="btn btn-primary">👁️ Visualiser</a>
+                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" download onclick="trackDownload('BGP6')" class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
         <div class="card">
             <div>
                 <h3 class="card-title">Configuration d'un Cluster (Haute Disponibilité)</h3>
-                <p class="card-desc">Installation, basculement de charge et tolérance aux pannes pour infrastructures de serveur.</p>
+                <p class="card-desc">Déploiement de cluster de serveurs, répartition de charge et tolérance aux pannes.</p>
             </div>
             <div class="btn-group">
-                <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
-                <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" download class="btn btn-secondary">📥 Télécharger</a>
+                <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" target="_blank" onclick="trackClick('Cluster')" class="btn btn-primary">👁️ Visualiser</a>
+                <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" download onclick="trackDownload('Cluster')" class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
         <div class="card">
             <div>
                 <h3 class="card-title">Administration Systèmes Linux & Windows</h3>
-                <p class="card-desc">Gestion des annuaires Active Directory, services réseaux (DNS, DHCP, SSH) et sécurité systèmes.</p>
+                <p class="card-desc">Gestion des services d'annuaire AD DS, GPO, DNS, DHCP et administration Linux.</p>
             </div>
             <div class="btn-group">
-                <a href="docs/Rapport_D'administration_systhème_Fabrice_Olivier_Lamine_TINE .pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
-                <a href="docs/Rapport_D'administration_systhème_Fabrice_Olivier_Lamine_TINE .pdf" download class="btn btn-secondary">📥 Télécharger</a>
+                <a href="docs/Rapport_D'administration_systhème_Fabrice_Olivier_Lamine_TINE .pdf" target="_blank" onclick="trackClick('SysAdmin')" class="btn btn-primary">👁️ Visualiser</a>
+                <a href="docs/Rapport_D'administration_systhème_Fabrice_Olivier_Lamine_TINE .pdf" download onclick="trackDownload('SysAdmin')" class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
         <div class="card">
             <div>
                 <h3 class="card-title">Téléphonie sur IP (ToIP / VoIP)</h3>
-                <p class="card-desc">Architecture VoIP, déploiement d'IPBX, plans de numérotation et protocoles SIP.</p>
+                <p class="card-desc">Configuration d'IPBX, gestion des protocoles SIP et plan de numérotation VoIP.</p>
             </div>
             <div class="btn-group">
-                <a href="docs/Rapport_Téléphonie_sur_ IP Fabrice Olivier Lamine TINE M1 RESI.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
-                <a href="docs/Rapport_Téléphonie_sur_ IP Fabrice Olivier Lamine TINE M1 RESI.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+                <a href="docs/Rapport_Téléphonie_sur_ IP Fabrice Olivier Lamine TINE M1 RESI.pdf" target="_blank" onclick="trackClick('VoIP')" class="btn btn-primary">👁️ Visualiser</a>
+                <a href="docs/Rapport_Téléphonie_sur_ IP Fabrice Olivier Lamine TINE M1 RESI.pdf" download onclick="trackDownload('VoIP')" class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
         <div class="card">
             <div>
                 <h3 class="card-title">Architectures de Stockage Réseau (SAN/NAS)</h3>
-                <p class="card-desc">Étude approfondie sur la gestion des baies de stockage, RAID et protocoles de stockage d'entreprise.</p>
+                <p class="card-desc">Analyse des baies de stockage, configuration RAID et gestion des volumes SAN/NAS.</p>
             </div>
             <div class="btn-group">
-                <a href="docs/Rappot_Examen_Stockage_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
-                <a href="docs/Rappot_Examen_Stockage_Fabrice_Olivier_Lamine_TINE.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+                <a href="docs/Rappot_Examen_Stockage_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" onclick="trackClick('Stockage')" class="btn btn-primary">👁️ Visualiser</a>
+                <a href="docs/Rappot_Examen_Stockage_Fabrice_Olivier_Lamine_TINE.pdf" download onclick="trackDownload('Stockage')" class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
 
         <div class="card">
             <div>
                 <h3 class="card-title">Machine Learning - Régression Linéaire</h3>
-                <p class="card-desc">Modélisation prédictive, analyse de données et évaluation des modèles de régression avec Python.</p>
+                <p class="card-desc">Entraînement de modèles statistiques prédictifs avec Python et Scikit-learn.</p>
             </div>
             <div class="btn-group">
-                <a href="docs/Rapport_Regression_Lineaire_Detaille.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
-                <a href="docs/Rapport_Regression_Lineaire_Detaille.pdf" download class="btn btn-secondary">📥 Télécharger</a>
+                <a href="docs/Rapport_Regression_Lineaire_Detaille.pdf" target="_blank" onclick="trackClick('ML')" class="btn btn-primary">👁️ Visualiser</a>
+                <a href="docs/Rapport_Regression_Lineaire_Detaille.pdf" download onclick="trackDownload('ML')" class="btn btn-secondary">📥 Télécharger</a>
             </div>
         </div>
-
-        <!-- =================================================================== -->
-        <!-- 💡 COMMENTAIRE : POUR AJOUTER UN NOUVEAU PROJET PLUS TARD         -->
-        <!-- Duplique le bloc <div class="card">...</div> ci-dessous :          -->
-        <!--                                                                     -->
-        <!--
-        <div class="card">
-            <div>
-                <h3 class="card-title">Titre du Nouveau Projet</h3>
-                <p class="card-desc">Description courte du projet...</p>
-            </div>
-            <div class="btn-group">
-                <a href="docs/NOM_DU_FICHIER.pdf" target="_blank" class="btn btn-primary">👁️ Visualiser</a>
-                <a href="docs/NOM_DU_FICHIER.pdf" download class="btn btn-secondary">📥 Télécharger</a>
-            </div>
-        </div>
-        -->
-        <!-- =================================================================== -->
 
     </div>
 
 </div>
+
+<!-- MODALE DE CARNET / AVIS - INTÉGRATION FORMSPREE AJAX -->
+<div id="feedbackModal" class="modal-overlay">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3>💬 Laisser un avis / Message</h3>
+            <button class="close-btn" onclick="closeFeedbackModal()">&times;</button>
+        </div>
+
+        <!-- ZONE DE MESSAGE DE SUCCÈS OU D'ERREUR -->
+        <div data-fs-success>Merci ! Votre message a été envoyé directement avec succès.</div>
+        <div data-fs-error>Une erreur est survenue lors de l'envoi.</div>
+
+        <!-- FORMULAIRE DE SOUMISSION AJAX FORMSPREE (ENDPOINT : xppwdelg) -->
+        <form id="feedback-form">
+            <div class="form-group">
+                <label for="name">Votre Nom / Entreprise :</label>
+                <input type="text" id="name" name="name" required placeholder="Ex: Marc (Recruteur)" data-fs-field />
+                <span data-fs-error="name"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Votre Adresse E-mail :</label>
+                <input type="email" id="email" name="email" required placeholder="nom@entreprise.com" data-fs-field />
+                <span data-fs-error="email"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Votre Avis ou Message :</label>
+                <textarea id="message" name="message" rows="4" required placeholder="Écrivez votre message..." data-fs-field></textarea>
+                <span data-fs-error="message"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;" data-fs-submit-btn>Envoyer le message</button>
+        </form>
+    </div>
+</div>
+
+<!-- SCRIPTS FORMSPREE AJAX VIA CDN -->
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#feedback-form', formId: 'xppwdelg' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+<!-- SCRIPTS COMPTEURS ET ACCÈS ADMIN SÉCURISÉ -->
+<script>
+    // 1. STATISTIQUES EN LOCALSTORAGE
+    function initStats() {
+        let views = parseInt(localStorage.getItem('portfolio_views') || '0') + 1;
+        localStorage.setItem('portfolio_views', views);
+        document.getElementById('statViews').innerText = views;
+        document.getElementById('statClicks').innerText = localStorage.getItem('portfolio_clicks') || '0';
+        document.getElementById('statDownloads').innerText = localStorage.getItem('portfolio_downloads') || '0';
+    }
+
+    function trackClick(item) {
+        let clicks = parseInt(localStorage.getItem('portfolio_clicks') || '0') + 1;
+        localStorage.setItem('portfolio_clicks', clicks);
+        document.getElementById('statClicks').innerText = clicks;
+    }
+
+    function trackDownload(item) {
+        let downloads = parseInt(localStorage.getItem('portfolio_downloads') || '0') + 1;
+        localStorage.setItem('portfolio_downloads', downloads);
+        document.getElementById('statDownloads').innerText = downloads;
+    }
+
+    // 2. MODALE D'AVIS
+    function openFeedbackModal() {
+        document.getElementById('feedbackModal').style.display = 'flex';
+    }
+    function closeFeedbackModal() {
+        document.getElementById('feedbackModal').style.display = 'none';
+    }
+
+    // 3. ACCÈS ACCÈS SÉCURISÉ ADMIN (MASQUÉ DU PUBLIC)
+    function checkAdminCredentials() {
+        let user = prompt("Nom d'utilisateur Admin :");
+        let pass = prompt("Mot de passe :");
+        if (user === "Fabrice" && pass === "f@bolitine/123") {
+            let panel = document.getElementById('adminPanel');
+            panel.style.display = 'block';
+            document.getElementById('adminBioInput').value = document.getElementById('displayBio').innerText.trim();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else if (user !== null) {
+            alert("Accès refusé : Identifiants incorrects.");
+        }
+    }
+
+    // Raccourci Clavier : Touches Ctrl + Shift + A
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+            e.preventDefault();
+            checkAdminCredentials();
+        }
+    });
+
+    // Astuce Tactile / Mobile : 3 clics rapides sur ton nom
+    let clickCount = 0;
+    let clickTimer;
+    function handleNameClicks() {
+        clickCount++;
+        clearTimeout(clickTimer);
+        if (clickCount === 3) {
+            clickCount = 0;
+            checkAdminCredentials();
+        } else {
+            clickTimer = setTimeout(() => { clickCount = 0; }, 1000);
+        }
+    }
+
+    function logoutAdmin() {
+        document.getElementById('adminPanel').style.display = 'none';
+    }
+
+    function updateBio() {
+        let newBio = document.getElementById('adminBioInput').value;
+        if(newBio) {
+            document.getElementById('displayBio').innerText = newBio;
+            alert("Description mise à jour à l'écran !");
+        }
+    }
+
+    function addNewDoc() {
+        let title = document.getElementById('newDocTitle').value;
+        let file = document.getElementById('newDocFile').value;
+        if (title && file) {
+            let html = `
+            <div class="card">
+                <div>
+                    <h3 class="card-title">${title}</h3>
+                    <p class="card-desc">Nouveau document ajouté depuis l'administration.</p>
+                </div>
+                <div class="btn-group">
+                    <a href="docs/${file}" target="_blank" onclick="trackClick('${title}')" class="btn btn-primary">👁️ Visualiser</a>
+                    <a href="docs/${file}" download onclick="trackDownload('${title}')" class="btn btn-secondary">📥 Télécharger</a>
+                </div>
+            </div>`;
+            document.getElementById('projectsContainer').insertAdjacentHTML('beforeend', html);
+            alert("Nouveau projet ajouté au portfolio !");
+        }
+    }
+
+    // INITIALISATION
+    window.onload = initStats;
+</script>
 
 </body>
 </html>
