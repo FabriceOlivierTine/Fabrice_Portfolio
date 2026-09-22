@@ -8,7 +8,7 @@
         :root {
             --bg-main: #f1f5f9;
             --card-bg: #ffffff;
-            --border-color: #cbd5e1;
+            --border-color: #94a3b8;
             --text-primary: #0f172a;
             --text-secondary: #334155;
             --accent-blue: #2563eb;
@@ -19,7 +19,7 @@
             --accent-amber-bg: #fffbeb;
             --accent-amber-border: #fcd34d;
             --accent-green: #16a34a;
-            --card-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+            --card-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
         }
 
         * {
@@ -36,16 +36,15 @@
             position: relative;
         }
 
-        /* Image de fond ultra claire, nette, sans flou */
+        /* Fond avec fond.jpg bien visible et contrasté */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(241, 245, 249, 0.82), rgba(241, 245, 249, 0.88)), url('fond.jpg');
+            background-image: linear-gradient(rgba(241, 245, 249, 0.55), rgba(241, 245, 249, 0.65)), url('fond.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            filter: brightness(1.15) contrast(1.05);
             z-index: -1;
         }
 
@@ -54,14 +53,15 @@
             margin: 0 auto;
         }
 
-        /* EN-TÊTE / PROFIL */
+        /* EN-TÊTE / PROFIL AVEC OMBRE NETTE */
         .profile-card {
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.95);
             border: 2px solid var(--border-color);
             border-radius: 16px;
             padding: 30px;
-            box-shadow: var(--card-shadow);
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
             margin-bottom: 35px;
+            backdrop-filter: blur(4px);
         }
 
         .profile-header-main {
@@ -77,7 +77,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-blue);
-            box-shadow: 0 0 12px rgba(37, 99, 235, 0.25);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
             flex-shrink: 0;
         }
 
@@ -116,12 +116,13 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            background: #f8fafc;
+            background: #ffffff;
             padding: 8px 14px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
             color: var(--text-secondary);
             font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .contact-item a {
@@ -159,15 +160,15 @@
         .btn-cv {
             background: var(--accent-blue);
             color: #ffffff;
-            padding: 12px 20px;
-            border-radius: 10px;
+            padding: 10px 18px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.92em;
+            font-size: 0.88em;
             display: block;
             text-align: center;
             transition: background 0.2s, transform 0.1s;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
         }
 
         .btn-cv:hover {
@@ -181,16 +182,19 @@
             color: var(--text-primary);
             font-weight: 800;
             margin: 35px 0 15px 0;
-            border-bottom: 3px solid var(--accent-blue);
-            padding-bottom: 6px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 6px 14px;
+            border-left: 4px solid var(--accent-blue);
+            border-radius: 4px;
             display: inline-block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .horizontal-scroll {
             display: flex;
             gap: 18px;
             overflow-x: auto;
-            padding-bottom: 15px;
+            padding: 10px 5px 20px 5px;
             scroll-behavior: smooth;
         }
 
@@ -199,64 +203,62 @@
         }
 
         .horizontal-scroll::-webkit-scrollbar-thumb {
-            background: #94a3b8;
+            background: var(--accent-slate);
             border-radius: 4px;
         }
 
+        /* CARTES FICHIERS AVEC OMBRE MARQUÉE ET RÉVÉLATION DU FOND */
         .card {
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.95);
             border: 2px solid var(--border-color);
             border-radius: 12px;
-            padding: 20px;
-            min-width: 285px;
-            max-width: 285px;
+            padding: 18px;
+            min-width: 275px;
+            max-width: 275px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             box-shadow: var(--card-shadow);
             flex-shrink: 0;
-            transition: border-color 0.2s, transform 0.2s;
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            backdrop-filter: blur(4px);
         }
 
         .card:hover {
             border-color: var(--accent-blue);
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22);
         }
 
         .card-title {
             margin: 0 0 8px 0;
-            font-size: 1.1em;
+            font-size: 1.05em;
             color: var(--text-primary);
             font-weight: 700;
         }
 
         .card-desc {
             color: var(--text-secondary);
-            font-size: 0.88em;
+            font-size: 0.86em;
             line-height: 1.45;
             margin-bottom: 15px;
             flex-grow: 1;
         }
 
-        /* BOUTONS SANS ICÔNES COMPACTS ET NETS */
+        /* BOUTONS COMPACTS EN VERTICAL */
         .btn-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-        }
-
-        .btn-row {
-            display: flex;
-            gap: 8px;
+            gap: 6px;
         }
 
         .btn {
-            flex: 1;
-            padding: 9px;
-            font-size: 0.85em;
+            width: 100%;
+            padding: 7px 10px;
+            font-size: 0.80em;
             font-weight: 700;
             text-decoration: none;
-            border-radius: 7px;
+            border-radius: 6px;
             cursor: pointer;
             border: none;
             text-align: center;
@@ -285,22 +287,21 @@
             background-color: var(--accent-amber-bg);
             color: var(--accent-amber);
             border: 1px solid var(--accent-amber-border);
-            width: 100%;
         }
 
         .btn-feedback:hover {
             background-color: #fef3c7;
         }
 
-        /* ESPACE ADMIN VIA ONGLETS */
+        /* ESPACE ADMIN */
         .admin-dashboard {
             display: none;
-            background: var(--card-bg);
+            background: #ffffff;
             border: 2px solid var(--accent-blue);
             border-radius: 14px;
             padding: 25px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
         }
 
         .admin-tabs {
@@ -377,7 +378,7 @@
             width: 90%;
             max-width: 480px;
             padding: 25px;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
             border: 1px solid var(--border-color);
         }
 
@@ -396,7 +397,6 @@
             color: var(--text-secondary);
         }
 
-        /* Champ mot de passe avec masque/démasque */
         .password-wrapper {
             position: relative;
             display: flex;
@@ -435,7 +435,7 @@
 
 <div class="container">
 
-    <!-- PANNEAU ADMIN SÉCURISÉ (ACCÈS SÉCRET : CTRL+SHIFT+A OU 3 CLICS SUR LE NOM) -->
+    <!-- PANNEAU ADMIN SÉCURISÉ (ACCÈS : CTRL+SHIFT+A OU 3 CLICS SUR LE NOM) -->
     <div id="adminPanel" class="admin-dashboard">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
             <h3 style="margin: 0; color: var(--accent-blue);">Espace Administration</h3>
@@ -541,7 +541,7 @@
     </header>
 
 
-    <!-- SECTION 1 : CERTIFICATIONS (BOUTON VISUALISER + DONNER UN AVIS) -->
+    <!-- SECTION 1 : CERTIFICATIONS (BOUTONS EN ALIGNEMENT VERTICAL) -->
     <h2 class="section-header">Certifications & Accréditations</h2>
     <div class="horizontal-scroll" id="certifContainer">
 
@@ -592,7 +592,7 @@
     </div>
 
 
-    <!-- SECTION 2 : TRAVAUX PRATIQUES (VISUALISER + TÉLÉCHARGER + DONNER UN AVIS SUR CHAQUE CARTE) -->
+    <!-- SECTION 2 : TRAVAUX PRATIQUES (BOUTONS EN ALIGNEMENT VERTICAL) -->
     <h2 class="section-header">Travaux Pratiques & Projets</h2>
     <div class="horizontal-scroll" id="tpContainer">
 
@@ -602,10 +602,8 @@
                 <p class="card-desc">Pipelines CI/CD et automatisation d'infrastructures.</p>
             </div>
             <div class="btn-group">
-                <div class="btn-row">
-                    <a href="docs/Rapport_Ingenierie_SmartTask_DevOps_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" onclick="trackClick('DevOps')" class="btn btn-primary">Visualiser</a>
-                    <a href="docs/Rapport_Ingenierie_SmartTask_DevOps_Fabrice_Olivier_Lamine_TINE.pdf" download onclick="trackDownload('DevOps')" class="btn btn-secondary">Télécharger</a>
-                </div>
+                <a href="docs/Rapport_Ingenierie_SmartTask_DevOps_Fabrice_Olivier_Lamine_TINE.pdf" target="_blank" onclick="trackClick('DevOps')" class="btn btn-primary">Visualiser</a>
+                <a href="docs/Rapport_Ingenierie_SmartTask_DevOps_Fabrice_Olivier_Lamine_TINE.pdf" download onclick="trackDownload('DevOps')" class="btn btn-secondary">Télécharger</a>
                 <button onclick="openFeedbackModal('DevOps - SmartTask')" class="btn btn-feedback">Donner un avis</button>
             </div>
         </div>
@@ -616,10 +614,8 @@
                 <p class="card-desc">Mise en œuvre de règles de filtrage et pare-feu.</p>
             </div>
             <div class="btn-group">
-                <div class="btn-row">
-                    <a href="docs/rapport_tp_DÉPLOIEMENT D'UNE INFRASTRUCTURE SÉCURISÉE AVEC .pdf" target="_blank" onclick="trackClick('InfraSecu')" class="btn btn-primary">Visualiser</a>
-                    <a href="docs/rapport_tp_DÉPLOIEMENT D'UNE INFRASTRUCTURE SÉCURISÉE AVEC .pdf" download onclick="trackDownload('InfraSecu')" class="btn btn-secondary">Télécharger</a>
-                </div>
+                <a href="docs/rapport_tp_DÉPLOIEMENT D'UNE INFRASTRUCTURE SÉCURISÉE AVEC .pdf" target="_blank" onclick="trackClick('InfraSecu')" class="btn btn-primary">Visualiser</a>
+                <a href="docs/rapport_tp_DÉPLOIEMENT D'UNE INFRASTRUCTURE SÉCURISÉE AVEC .pdf" download onclick="trackDownload('InfraSecu')" class="btn btn-secondary">Télécharger</a>
                 <button onclick="openFeedbackModal('Infrastructure Sécurisée')" class="btn btn-feedback">Donner un avis</button>
             </div>
         </div>
@@ -630,10 +626,8 @@
                 <p class="card-desc">Filtrage BGP et annonces de préfixes inter-AS.</p>
             </div>
             <div class="btn-group">
-                <div class="btn-row">
-                    <a href="docs/Rapport_TP_Module7_BGP_Filtrage Fabrice olivier Lamine TINE M1 RESI(1).pdf" target="_blank" onclick="trackClick('BGP7')" class="btn btn-primary">Visualiser</a>
-                    <a href="docs/Rapport_TP_Module7_BGP_Filtrage Fabrice olivier Lamine TINE M1 RESI(1).pdf" download onclick="trackDownload('BGP7')" class="btn btn-secondary">Télécharger</a>
-                </div>
+                <a href="docs/Rapport_TP_Module7_BGP_Filtrage Fabrice olivier Lamine TINE M1 RESI(1).pdf" target="_blank" onclick="trackClick('BGP7')" class="btn btn-primary">Visualiser</a>
+                <a href="docs/Rapport_TP_Module7_BGP_Filtrage Fabrice olivier Lamine TINE M1 RESI(1).pdf" download onclick="trackDownload('BGP7')" class="btn btn-secondary">Télécharger</a>
                 <button onclick="openFeedbackModal('Routage BGP Module 7')" class="btn btn-feedback">Donner un avis</button>
             </div>
         </div>
@@ -644,10 +638,8 @@
                 <p class="card-desc">Routage BGP interne et externe complexe.</p>
             </div>
             <div class="btn-group">
-                <div class="btn-row">
-                    <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" target="_blank" onclick="trackClick('BGP6')" class="btn btn-primary">Visualiser</a>
-                    <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" download onclick="trackDownload('BGP6')" class="btn btn-secondary">Télécharger</a>
-                </div>
+                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" target="_blank" onclick="trackClick('BGP6')" class="btn btn-primary">Visualiser</a>
+                <a href="docs/Rapport_Module6_iBGP_eBGP  Fabrice olivier Lmaine TINE.pdf" download onclick="trackDownload('BGP6')" class="btn btn-secondary">Télécharger</a>
                 <button onclick="openFeedbackModal('iBGP & eBGP')" class="btn btn-feedback">Donner un avis</button>
             </div>
         </div>
@@ -658,10 +650,8 @@
                 <p class="card-desc">Haute disponibilité et tolérance aux pannes.</p>
             </div>
             <div class="btn-group">
-                <div class="btn-row">
-                    <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" target="_blank" onclick="trackClick('Cluster')" class="btn btn-primary">Visualiser</a>
-                    <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" download onclick="trackDownload('Cluster')" class="btn btn-secondary">Télécharger</a>
-                </div>
+                <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" target="_blank" onclick="trackClick('Cluster')" class="btn btn-primary">Visualiser</a>
+                <a href="docs/RAPPORT_SUR_LA_CONFIGURATION D’UN CLUSTER .pdf" download onclick="trackDownload('Cluster')" class="btn btn-secondary">Télécharger</a>
                 <button onclick="openFeedbackModal('Cluster Haute Disponibilité')" class="btn btn-feedback">Donner un avis</button>
             </div>
         </div>
@@ -670,7 +660,7 @@
 
 </div>
 
-<!-- POP-UP / CARNET D'AVIS FORMSPREE -->
+<!-- POP-UP D'AVIS FORMSPREE -->
 <div id="feedbackModal" class="modal-overlay">
     <div class="modal-box">
         <div class="modal-header">
@@ -699,7 +689,7 @@
     </div>
 </div>
 
-<!-- POP-UP DE CONNEXION ADMIN (MOT DE PASSE MASQUÉ + BOUTON AFFICHER) -->
+<!-- POP-UP CONNEXION ADMIN -->
 <div id="authModal" class="modal-overlay">
     <div class="modal-box" style="max-width: 380px;">
         <div class="modal-header">
@@ -750,7 +740,7 @@
         document.getElementById('statDownloads').innerText = downloads;
     }
 
-    // GESTION MODALE AVIS
+    // MODALE AVIS
     function openFeedbackModal(docTitle) {
         document.getElementById('modalDocTitle').innerText = "Avis : " + docTitle;
         document.getElementById('targetSubject').value = "Avis sur : " + docTitle;
@@ -760,7 +750,7 @@
         document.getElementById('feedbackModal').style.display = 'none';
     }
 
-    // GESTION CONNEXION ADMIN
+    // CONNEXION ADMIN
     function showAuthModal() {
         document.getElementById('authModal').style.display = 'flex';
     }
@@ -794,7 +784,6 @@
         }
     }
 
-    // Raccourci Ctrl + Shift + A
     document.addEventListener('keydown', function(e) {
         if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
             e.preventDefault();
@@ -802,7 +791,6 @@
         }
     });
 
-    // 3 Clics rapides sur le Nom
     let clickCount = 0;
     let clickTimer;
     function handleNameClicks() {
@@ -820,7 +808,6 @@
         document.getElementById('adminPanel').style.display = 'none';
     }
 
-    // NAVIGATION DANS L'ADMINISTRATION
     function switchTab(evt, tabId) {
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
         document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
@@ -882,10 +869,8 @@
                     <p class="card-desc">${desc}</p>
                 </div>
                 <div class="btn-group">
-                    <div class="btn-row">
-                        <a href="docs/${file}" target="_blank" onclick="trackClick('${title}')" class="btn btn-primary">Visualiser</a>
-                        <a href="docs/${file}" download onclick="trackDownload('${title}')" class="btn btn-secondary">Télécharger</a>
-                    </div>
+                    <a href="docs/${file}" target="_blank" onclick="trackClick('${title}')" class="btn btn-primary">Visualiser</a>
+                    <a href="docs/${file}" download onclick="trackDownload('${title}')" class="btn btn-secondary">Télécharger</a>
                     <button onclick="openFeedbackModal('${title}')" class="btn btn-feedback">Donner un avis</button>
                 </div>
             </div>`;
